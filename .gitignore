@@ -1,0 +1,10 @@
+/.env
+/vendor
+/node_modules
+/database/*.sqlite
+/storage/*.key
+/storage/*
+/bootstrap/cache/*.php
+!/storage/framework/views/.gitkeep
+.DS_Store
+Thumbs.db
