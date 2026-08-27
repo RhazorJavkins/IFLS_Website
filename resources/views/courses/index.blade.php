@@ -103,15 +103,15 @@
                     @endforeach
                 </div>
 
-                {{-- CTA Bahasa Indonesia --}}
-                <div class="mt-4 p-3 rounded-3 d-flex flex-wrap gap-3 align-items-center justify-content-between" style="background: linear-gradient(135deg, #b03a3a 10%, #fff 90%); border:1px solid #f5c2c2;">
-                    <div>
-                        <div class="fw-bold" style="color:#7a1f1f;"><i class="fa-solid fa-fire me-1"></i> {{ __('messages.prog_indo') }} — {{ __('messages.badge_flagship') }}</div>
-                        <div class="small text-muted">{{ __('messages.register_now') }} &bull; {{ __('messages.consultation') }} gratis</div>
+                {{-- CTA Bahasa Indonesia — WeChat + WhatsApp (solid) --}}
+                <div class="mt-4 p-3 rounded-3 d-flex flex-wrap gap-3 align-items-center justify-content-between shadow-sm" style="background:#B01C1C;">
+                    <div class="text-white">
+                        <div class="fw-bold"><i class="fa-solid fa-fire me-1"></i> {{ __('messages.prog_indo') }} — {{ __('messages.badge_flagship') }}</div>
+                        <div class="small" style="opacity:.85;">{{ __('messages.courses_cta_id_sub') }}</div>
                     </div>
                     <div class="d-flex gap-2">
-                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-danger px-4 fw-bold shadow-sm"><i class="fa-solid fa-pen-to-square me-1"></i> {{ __('messages.register_now') }}</a>
-                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-outline-danger bg-white px-3">{{ __('messages.consultation') }}</a>
+                        <button type="button" class="btn btn-light fw-bold px-4 text-dark" data-bs-toggle="modal" data-bs-target="#wechatModal"><i class="fa-brands fa-weixin me-1" style="color:#07C160;"></i> WeChat</button>
+                        <a href="https://wa.me/628118887568?text=Halo%20IF%20Language%20School%20-%20Info%20Bahasa%20Indonesia" target="_blank" rel="noopener" class="btn fw-bold px-4 text-white" style="background:#25D366; border-color:#25D366;"><i class="fa-brands fa-whatsapp me-1"></i> WhatsApp</a>
                     </div>
                 </div>
 
@@ -155,15 +155,15 @@
                     <span class="badge bg-dark p-2"><i class="fa-solid fa-building me-1"></i>{{ __('messages.svc_type_corporate') }}</span>
                 </div>
 
-                {{-- CTA Mandarin --}}
-                <div class="mt-4 p-3 rounded-3 d-flex flex-wrap gap-3 align-items-center justify-content-between" style="background: linear-gradient(135deg, #1a2a4f 10%, #fff 90%); border:1px solid #cbd5e1;">
-                    <div>
-                        <div class="fw-bold" style="color:#1a2a4f;"><i class="fa-solid fa-language me-1"></i> {{ __('messages.prog_mandarin') }} — {{ __('messages.badge_online_privat') }}</div>
-                        <div class="small text-muted">Online privat • Native speaker</div>
+                {{-- CTA Mandarin — WeChat + WhatsApp (solid) --}}
+                <div class="mt-4 p-3 rounded-3 d-flex flex-wrap gap-3 align-items-center justify-content-between shadow-sm" style="background:#1A2A4F;">
+                    <div class="text-white">
+                        <div class="fw-bold"><i class="fa-solid fa-language me-1"></i> {{ __('messages.prog_mandarin') }} — {{ __('messages.badge_online_privat') }}</div>
+                        <div class="small" style="opacity:.85;">{{ __('messages.courses_cta_mandarin_sub') }}</div>
                     </div>
                     <div class="d-flex gap-2">
-                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-primary px-4 fw-bold shadow-sm"><i class="fa-solid fa-pen-to-square me-1"></i> {{ __('messages.register_now') }}</a>
-                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-outline-primary bg-white px-3">{{ __('messages.free_trial') }}</a>
+                        <button type="button" class="btn btn-light fw-bold px-4 text-dark" data-bs-toggle="modal" data-bs-target="#wechatModal"><i class="fa-brands fa-weixin me-1" style="color:#07C160;"></i> WeChat</button>
+                        <a href="https://wa.me/628118887568?text=Halo%20IF%20Language%20School%20-%20Info%20Mandarin" target="_blank" rel="noopener" class="btn fw-bold px-4 text-white" style="background:#25D366; border-color:#25D366;"><i class="fa-brands fa-whatsapp me-1"></i> WhatsApp</a>
                     </div>
                 </div>
 
@@ -194,15 +194,15 @@
                     </div>
                 </div>
 
-                {{-- CTA English --}}
-                <div class="mt-4 p-3 rounded-3 d-flex flex-wrap gap-3 align-items-center justify-content-between" style="background: linear-gradient(135deg, #2d6a4f 10%, #fff 90%); border:1px solid #c3e6cb;">
-                    <div>
-                        <div class="fw-bold" style="color:#1b4332;"><i class="fa-solid fa-graduation-cap me-1"></i> {{ __('messages.prog_english') }} — {{ __('messages.badge_small_class') }}</div>
-                        <div class="small text-muted">Placement test gratis • Max 4 siswa</div>
+                {{-- CTA English — WeChat + WhatsApp (solid) --}}
+                <div class="mt-4 p-3 rounded-3 d-flex flex-wrap gap-3 align-items-center justify-content-between shadow-sm" style="background:#1B4332;">
+                    <div class="text-white">
+                        <div class="fw-bold"><i class="fa-solid fa-graduation-cap me-1"></i> {{ __('messages.prog_english') }} — {{ __('messages.badge_small_class') }}</div>
+                        <div class="small" style="opacity:.85;">{{ __('messages.courses_cta_english_sub') }}</div>
                     </div>
                     <div class="d-flex gap-2">
-                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-success px-4 fw-bold shadow-sm"><i class="fa-solid fa-pen-to-square me-1"></i> {{ __('messages.register_now') }}</a>
-                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-outline-success bg-white px-3">{{ __('messages.free_trial') }}</a>
+                        <button type="button" class="btn btn-light fw-bold px-4 text-dark" data-bs-toggle="modal" data-bs-target="#wechatModal"><i class="fa-brands fa-weixin me-1" style="color:#07C160;"></i> WeChat</button>
+                        <a href="https://wa.me/628118887568?text=Halo%20IF%20Language%20School%20-%20Info%20English%20Class" target="_blank" rel="noopener" class="btn fw-bold px-4 text-white" style="background:#25D366; border-color:#25D366;"><i class="fa-brands fa-whatsapp me-1"></i> WhatsApp</a>
                     </div>
                 </div>
 
@@ -228,6 +228,34 @@
             </div>
         </div>
     </div>
+</div>
+
+{{-- ===== WeChat QR Modal (pop-out) ===== --}}
+<div class="modal fade" id="wechatModal" tabindex="-1" aria-labelledby="wechatModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 380px;">
+    <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+      <div class="modal-header border-0 pb-0" style="background:#07C160;">
+        <h5 class="modal-title text-white fw-bold" id="wechatModalLabel"><i class="fa-brands fa-weixin me-2"></i> WeChat — IF Language School</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center p-4">
+        <div class="bg-white border rounded-3 p-3 d-inline-block shadow-sm mb-3">
+          <img src="https://placehold.co/240x240/07C160/FFFFFF?text=WeChat+QR" alt="WeChat QR" class="img-fluid rounded-2" style="width:240px; height:240px; object-fit:contain;">
+        </div>
+        <h6 class="fw-bold mb-1">Scan untuk Hubungi Kami</h6>
+        <p class="small text-muted mb-2">Buka WeChat → Scan QR di atas</p>
+        <div class="bg-light rounded-3 p-2 small">
+          <div class="fw-bold" style="color:#07C160;"><i class="fa-solid fa-qrcode me-1"></i> ID: IFLanguageSchool</div>
+          <div class="text-muted" style="font-size:.75rem;">Atau cari ID di WeChat • Balas cepat di jam kerja</div>
+        </div>
+        <div class="d-grid gap-2 mt-3">
+          <a href="https://wa.me/628118887568?text=Halo%20IF%20Language%20School" target="_blank" class="btn fw-bold text-white" style="background:#25D366; border-color:#25D366;"><i class="fa-brands fa-whatsapp me-1"></i> Atau chat WhatsApp</a>
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div>
+        <p class="small text-muted mt-2 mb-0" style="font-size:.70rem;">Ganti QR placeholder di <code>public/images/wechat-qr.png</code></p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>

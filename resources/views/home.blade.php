@@ -4,36 +4,99 @@
 
 @section('content')
 
-{{-- ===== 1. HERO — sinkron dengan 3 kota + terjemahan ===== --}}
-<section class="hero-section text-white text-center position-relative overflow-hidden" style="background: linear-gradient(135deg, #1a2a4f 0%, #2d4a7a 60%, #b03a3a 100%); padding: 110px 0 90px;">
+{{-- ===== 1. HERO PREMIUM — split + visual ===== --}}
+<section class="hero-premium text-white position-relative overflow-hidden" style="background: linear-gradient(135deg, #0f1e3a 0%, #1a2a4f 45%, #2d4a7a 70%, #b03a3a 100%); padding: 90px 0 80px;">
     <div class="container position-relative" style="z-index:2;">
-        @if(!empty(__('messages.hero_badge')))
-            <span class="badge bg-light text-dark mb-3 px-3 py-2 shadow-sm">{{ __('messages.hero_badge') }}</span>
-        @endif
-        <h1 class="display-3 fw-bold mb-3" style="line-height:1.1;">{{ __('messages.welcome_title') }}</h1>
-        <p class="lead mb-2 mx-auto" style="max-width: 640px;">{{ __('messages.welcome_subtitle') }}</p>
-        <p class="small mb-1 opacity-75">{{ __('messages.home_campuses') }}</p>
-        <p class="small mb-4 opacity-75"><i class="fa-solid fa-language me-1"></i> {{ __('messages.home_hero_extra') }}</p>
-        <div class="d-flex gap-3 justify-content-center flex-wrap">
-            <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-warning btn-lg px-4 fw-bold shadow">
-                {{ __('messages.register_now') }}
-            </a>
-            <a href="{{ url(app()->getLocale() . '/courses') }}" class="btn btn-outline-light btn-lg px-4">
-                {{ __('messages.hero_cta_courses') }}
-            </a>
-            <a href="{{ url(app()->getLocale() . '/services') }}" class="btn btn-light btn-lg px-4 fw-bold text-dark">
-                <i class="fa-solid fa-language me-1 text-primary"></i> {{ __('messages.services') }}
-            </a>
-        </div>
-        <div class="d-flex gap-2 justify-content-center flex-wrap mt-4 small opacity-75">
-            <span><i class="fa-solid fa-map-pin me-1 text-warning"></i> PIK • Central Park • Serpong</span>
-            <span class="d-none d-md-inline">•</span>
-            <span><i class="fa-solid fa-map-pin me-1 text-warning"></i> Semarang • Surabaya</span>
-            <span class="d-none d-md-inline">•</span>
-            <span><i class="fa-solid fa-video me-1 text-warning"></i> Online Live</span>
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 text-center text-lg-start">
+                @if(!empty(__('messages.hero_badge')))
+                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 shadow-sm fw-semibold" style="letter-spacing:.3px; font-size:.75rem;"><i class="fa-solid fa-award me-1"></i> {{ __('messages.hero_badge') }}</span>
+                @endif
+                <h1 class="display-4 fw-bold mb-3" style="line-height:1.08; letter-spacing:-.5px;">
+                    {{ __('messages.welcome_title') }}
+                    <span class="d-block" style="background: linear-gradient(90deg, #FFD166, #ff9a76); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Indonesia ⇄ China</span>
+                </h1>
+                <p class="lead mb-2" style="opacity:.92;">{{ __('messages.welcome_subtitle') }}</p>
+                <p class="small mb-1" style="opacity:.70;"><i class="fa-solid fa-map-pin text-warning me-1"></i> {{ __('messages.home_campuses') }}</p>
+                <p class="small mb-4" style="opacity:.70;"><i class="fa-solid fa-language me-1 text-warning"></i> {{ __('messages.home_hero_extra') }}</p>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
+                    <a href="https://wa.me/628118887568?text=Halo%20IF%20Language%20School" target="_blank" class="btn btn-warning btn-lg px-4 fw-bold shadow">
+                        <i class="fa-brands fa-whatsapp me-1"></i> {{ __('messages.register_now') }}
+                    </a>
+                    <a href="{{ url(app()->getLocale() . '/courses') }}" class="btn btn-outline-light btn-lg px-4">
+                        {{ __('messages.hero_cta_courses') }}
+                    </a>
+                    <a href="{{ url(app()->getLocale() . '/services') }}" class="btn btn-light btn-lg px-4 fw-bold text-dark d-none d-sm-inline-flex align-items-center">
+                        <i class="fa-solid fa-language me-1 text-primary"></i> {{ __('messages.services') }}
+                    </a>
+                </div>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap mt-4 small" style="opacity:.75;">
+                    <span><i class="fa-solid fa-check-circle text-warning me-1"></i> 10.000+ alumni</span>
+                    <span><i class="fa-solid fa-check-circle text-warning me-1"></i> {{ __('messages.translation_trust_1') }}</span>
+                    <span><i class="fa-solid fa-check-circle text-warning me-1"></i> Online & Offline</span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative mx-auto" style="max-width: 460px;">
+                    {{-- Main card --}}
+                    <div class="bg-white rounded-4 p-4 shadow-lg text-dark position-relative" style="transform: rotate(-1.2deg);">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-3 d-flex align-items-center justify-content-center" style="width:52px;height:52px; background: linear-gradient(135deg, #1a2a4f, #b03a3a);">
+                                <i class="fa-solid fa-language text-white fa-lg"></i>
+                            </div>
+                            <div>
+                                <div class="fw-bold" style="letter-spacing:.5px;">ID ⇄ 中文 ⇄ EN</div>
+                                <div class="small text-muted">Kursus • Terjemahan • Interpreter</div>
+                            </div>
+                            <span class="badge bg-success ms-auto">Live</span>
+                        </div>
+                        <div class="bg-light rounded-3 p-3 mb-3">
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span class="text-muted">Kelas Bahasa Indonesia WNA</span><span class="fw-bold text-success">92% puas</span>
+                            </div>
+                            <div class="progress" style="height:7px;"><div class="progress-bar bg-success" style="width:92%"></div></div>
+                            <div class="d-flex justify-content-between small text-muted mt-1">
+                                <span><i class="fa-solid fa-users me-1"></i> 10.000+ siswa</span><span><i class="fa-solid fa-star text-warning me-1"></i> 4.9/5</span>
+                            </div>
+                        </div>
+                        <div class="row g-2 text-center small">
+                            <div class="col-4">
+                                <div class="bg-primary bg-opacity-10 rounded-3 py-2">
+                                    <div class="fw-bold text-primary">3</div><div class="text-muted" style="font-size:.65rem;">Kota</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="bg-warning bg-opacity-15 rounded-3 py-2">
+                                    <div class="fw-bold" style="color:#7a5200;">24J</div><div class="text-muted" style="font-size:.65rem;">Express</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="bg-success bg-opacity-10 rounded-3 py-2">
+                                    <div class="fw-bold text-success">Tersumpah</div><div class="text-muted" style="font-size:.65rem;">Resmi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Floating badge --}}
+                    <div class="position-absolute bg-warning text-dark rounded-pill px-3 py-2 shadow fw-bold d-flex align-items-center gap-2" style="top:-12px; right:-10px; font-size:.78rem; transform: rotate(2deg);">
+                        <i class="fa-solid fa-certificate"></i> Mitra Kemendikbud
+                    </div>
+                    <div class="position-absolute bg-white text-dark rounded-3 px-3 py-2 shadow d-flex align-items-center gap-2" style="bottom:-18px; left:-14px; font-size:.78rem;">
+                        <span class="rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;background:#07C160;"><i class="fa-brands fa-weixin text-white"></i></span>
+                        <div class="text-start"><div class="fw-bold" style="font-size:.78rem;">WeChat & WhatsApp</div><div class="small text-muted" style="font-size:.68rem;">Balas &lt; 15 menit</div></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="position-absolute" style="right:-60px; top:-60px; width:320px; height:320px; background: radial-gradient(circle, rgba(255,255,255,.10) 0%, transparent 70%); border-radius:50%;"></div>
+    <div class="position-absolute" style="right:-80px; top:-80px; width:420px; height:420px; background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%); border-radius:50%;"></div>
+    <div class="position-absolute" style="left:-100px; bottom:-100px; width:360px; height:360px; background: radial-gradient(circle, rgba(255,209,102,.10) 0%, transparent 70%); border-radius:50%;"></div>
+    {{-- Wave bottom --}}
+    <div class="position-absolute bottom-0 start-0 w-100" style="line-height:0;">
+        <svg viewBox="0 0 1440 48" class="w-100" style="height:48px; display:block;" preserveAspectRatio="none">
+            <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#f8f9fa" fill-opacity="1"></path>
+        </svg>
+    </div>
 </section>
 
 {{-- ===== 2. STATS STRIP ===== --}}
@@ -41,15 +104,15 @@
     <div class="container">
         <div class="row text-center g-4">
             <div class="col-6 col-md-4">
-                <h2 class="display-5 fw-bold text-primary mb-1">20,000+</h2>
+                <h2 class="display-5 fw-bold text-primary mb-1">10,000+</h2>
                 <p class="text-muted mb-0">{{ __('messages.stat_students') }}</p>
             </div>
             <div class="col-6 col-md-4">
-                <h2 class="display-5 fw-bold text-primary mb-1">2019</h2>
+                <h2 class="display-5 fw-bold text-primary mb-1">2012</h2>
                 <p class="text-muted mb-0">{{ __('messages.stat_years') }}</p>
             </div>
             <div class="col-6 col-md-4 mx-auto">
-                <h2 class="display-5 fw-bold text-primary mb-1">50+</h2>
+                <h2 class="display-5 fw-bold text-primary mb-1">100+</h2>
                 <p class="text-muted mb-0">{{ __('messages.stat_partners') }}</p>
             </div>
         </div>
@@ -176,6 +239,37 @@
                     <p class="text-muted small">{{ __("messages.why_{$i}_desc") }}</p>
                 </div>
             @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- ===== 5b. BEKERJASAMA DENGAN UNIVERSITAS — slider ===== --}}
+<section class="py-5 bg-light border-top border-bottom">
+    <div class="container">
+        <div class="text-center mb-4">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3"><i class="fa-solid fa-graduation-cap me-1"></i> {{ __('messages.uni_badge') }}</span>
+            <h2 class="fw-bold mb-2">{{ __('messages.uni_title') }}</h2>
+            <p class="text-muted mx-auto" style="max-width:640px;">{{ __('messages.uni_desc') }}</p>
+        </div>
+        <div class="position-relative uni-slider-wrap">
+            <button class="btn btn-light shadow-sm rounded-circle position-absolute top-50 start-0 translate-middle-y d-none d-md-flex align-items-center justify-content-center uni-prev" type="button" data-target="uniSliderHome" style="width:38px;height:38px; z-index:2; left:-12px !important;"><i class="fa-solid fa-chevron-left small"></i></button>
+            <button class="btn btn-light shadow-sm rounded-circle position-absolute top-50 end-0 translate-middle-y d-none d-md-flex align-items-center justify-content-center uni-next" type="button" data-target="uniSliderHome" style="width:38px;height:38px; z-index:2; right:-12px !important;"><i class="fa-solid fa-chevron-right small"></i></button>
+            <div id="uniSliderHome" class="uni-slider d-flex gap-3 overflow-auto flex-nowrap pb-2 px-1" style="scroll-snap-type:x mandatory; scrollbar-width:none; -ms-overflow-style:none;">
+                @php $unis = [['Universitas Indonesia','UI','Depok','#1a2a4f'],['Universitas Padjadjaran','UNPAD','Jatinangor','#b03a3a'],['Universitas Al Azhar Indonesia','UAI','Jakarta','#2d6a4f'],['Universitas Bunda Mulia','UBM','Jakarta','#7a5200'],['Universitas Gadjah Mada','UGM','Yogyakarta','#1a2a4f'],['Universitas Padjadjaran Ekstensi','UNPAD+','Bandung','#b03a3a']]; @endphp
+                @foreach($unis as $u)
+                    <div class="flex-shrink-0" style="width:240px; scroll-snap-align:start;">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 uni-card">
+                            <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width:56px;height:56px;background:{{ $u[3] }};">{{ $u[1] }}</div>
+                            <h6 class="fw-bold mb-1" style="font-size:.85rem;">{{ $u[0] }}</h6>
+                            <div class="small text-muted">{{ $u[2] }}</div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="text-center small text-muted mt-2 d-md-none"><i class="fa-solid fa-arrows-left-right me-1"></i> Geser untuk melihat lainnya</div>
+        </div>
+        <div class="text-center mt-3">
+            <a href="{{ url(app()->getLocale() . '/about#universitas') }}" class="btn btn-outline-primary px-4">{{ __('messages.uni_cta') }} <i class="fa-solid fa-arrow-right ms-1"></i></a>
         </div>
     </div>
 </section>
