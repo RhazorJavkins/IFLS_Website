@@ -3,91 +3,265 @@
 @section('title', __('messages.our_courses'))
 
 @section('content')
-<div class="container py-5">
-    <h1 class="text-center mb-4">{{ __('messages.our_courses') }}</h1>
 
-    <!-- Filter Level -->
-    <div class="row mb-4">
-        <div class="col-md-6 mx-auto">
-            <form method="GET" action="{{ url('/' . app()->getLocale() . '/courses') }}" class="d-flex gap-2">
-                <select name="level" class="form-select">
-                    <option value="">{{ __('messages.all_levels') }}</option>
-                    <option value="Pemula" {{ request('level') == 'Pemula' ? 'selected' : '' }}>
-                        {{ __('messages.levels.Pemula') }}
-                    </option>
-                    <option value="Menengah" {{ request('level') == 'Menengah' ? 'selected' : '' }}>
-                        {{ __('messages.levels.Menengah') }}
-                    </option>
-                    <option value="Lanjutan" {{ request('level') == 'Lanjutan' ? 'selected' : '' }}>
-                        {{ __('messages.levels.Lanjutan') }}
-                    </option>
-                </select>
-                <button type="submit" class="btn btn-primary">{{ __('messages.filter') }}</button>
-                @if(request('level'))
-                    <a href="{{ url('/' . app()->getLocale() . '/courses') }}" class="btn btn-secondary">{{ __('messages.reset') }}</a>
-                @endif
-            </form>
-        </div>
-    </div>
-
-    <!-- Level & Materi -->
-    <div class="row mb-2">
-        <div class="col-12 text-center">
-            <h2>{{ __('messages.level_and_materials') }}</h2>
-            <p class="text-muted">{{ __('messages.level_and_materials_subtitle') }}</p>
-        </div>
-    </div>
-    <div class="row g-4 mb-5">
-        @foreach(['Pemula', 'Menengah', 'Lanjutan'] as $lvl)
-            @php $info = __('messages.levels_info.' . $lvl); @endphp
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <span class="badge bg-primary">{{ __('messages.levels.' . $lvl) }}</span>
-                        </h5>
-                        <p class="card-text text-muted">{{ $info['desc'] }}</p>
-                        <h6 class="mt-3">{{ __('messages.materials_taught') }}</h6>
-                        <ul class="list-unstyled mb-3">
-                            @foreach($info['materials'] as $material)
-                                <li><i class="fas fa-check-circle text-success me-2"></i>{{ $material }}</li>
-                            @endforeach
-                        </ul>
-                        <a href="{{ url('/' . app()->getLocale() . '/courses?level=' . $lvl) }}" class="btn btn-outline-primary btn-sm">
-                            {{ __('messages.view_level_courses') }}
-                        </a>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-
-    <!-- Grid Kursus -->
+<div class="container py-4">
     <div class="row g-4">
-        @forelse($courses as $course)
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $course->translated_name }}</h5>
-                        <p class="card-text text-muted">
-                            <small>
-                                <i class="fas fa-tag"></i> {{ \Illuminate\Support\Facades\Lang::has('messages.levels.' . $course->level) ? __('messages.levels.' . $course->level) : $course->level }} &nbsp;|&nbsp;
-                                <i class="fas fa-clock"></i> {{ $course->duration }} {{ __('messages.hours') }}
-                            </small>
-                        </p>
-                        <p class="card-text">{{ Str::limit($course->translated_description, 100) }}</p>
-                        <h6 class="text-primary">Rp {{ number_format($course->price, 0, ',', '.') }}</h6>
-                        <a href="{{ route('courses.show', ['locale' => app()->getLocale(), 'course' => $course->id]) }}" class="btn btn-outline-primary mt-2">
-                            {{ __('messages.read_more') }}
-                        </a>
+
+        {{-- ===== SIDEBAR NAV (sticky) ===== --}}
+        <div class="col-lg-3">
+            <nav id="course-sidebar" class="course-sidebar sticky-lg-top pt-3">
+                <div class="list-group list-group-flush" id="courses-nav">
+                    <a class="list-group-item list-group-item-action border-0 ps-2" href="#overview">
+                        <i class="fa-solid fa-circle-info me-2 text-primary"></i>{{ __('messages.our_courses') }}
+                    </a>
+                    <a class="list-group-item list-group-item-action border-0 ps-2" href="#bahasa-indonesia">
+                        🇮🇩 {{ __('messages.prog_indo') }}
+                    </a>
+                    <a class="list-group-item list-group-item-action border-0 ps-2" href="#mandarin">
+                        🇨🇳 {{ __('messages.prog_mandarin') }}
+                    </a>
+                    <a class="list-group-item list-group-item-action border-0 ps-2" href="#english">
+                        🇬🇧 {{ __('messages.prog_english') }}
+                    </a>
+                </div>
+                <hr class="my-3">
+                <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-warning w-100 fw-bold">
+                    {{ __('messages.register_now') }}
+                </a>
+            </nav>
+        </div>
+
+        {{-- ===== KONTEN ===== --}}
+        <div class="col-lg-9">
+
+            {{-- Overview --}}
+            <section id="overview" class="py-4">
+                <h1 class="fw-bold mb-3">{{ __('messages.our_courses') }}</h1>
+                <p class="lead text-muted">{{ __('messages.courses_intro') }}</p>
+                <div class="d-flex gap-2 flex-wrap mt-3">
+                    <a href="#bahasa-indonesia" class="btn btn-outline-primary btn-sm">🇮🇩 {{ __('messages.prog_indo') }}</a>
+                    <a href="#mandarin" class="btn btn-outline-primary btn-sm">🇨🇳 {{ __('messages.prog_mandarin') }}</a>
+                    <a href="#english" class="btn btn-outline-primary btn-sm">🇬🇧 {{ __('messages.prog_english') }}</a>
+                </div>
+            </section>
+
+            <hr class="my-4">
+
+            {{-- ============================================================ --}}
+            {{-- PROGRAM 1: BAHASA INDONESIA UNTUK WNA (CORE BUSINESS) --}}
+            {{-- ============================================================ --}}
+            <section id="bahasa-indonesia" class="py-4 course-section">
+                <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+                    <h2 class="fw-bold mb-0">🇮🇩 {{ __('messages.prog_indo') }}</h2>
+                    <span class="badge bg-danger">{{ __('messages.badge_flagship') }}</span>
+                </div>
+                <p class="text-muted">{{ __('messages.ci_hero_desc') }}</p>
+
+                {{-- Tingkatan --}}
+                <h5 class="fw-bold mt-4"><i class="fa-solid fa-layer-group text-primary me-2"></i>{{ __('messages.levels_title') }}</h5>
+                <ul class="nav nav-pills mb-3" id="ci-level-tabs" role="tablist">
+                    <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#ci-lvl1" type="button">{{ __('messages.ci_lvl1') }}</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#ci-lvl2" type="button">{{ __('messages.ci_lvl2') }}</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#ci-lvl3" type="button">{{ __('messages.ci_lvl3') }}</button></li>
+                </ul>
+                <div class="tab-content bg-light rounded p-4">
+                    <div class="tab-pane fade show active" id="ci-lvl1"><p class="mb-0">{{ __('messages.ci_lvl1_desc') }}</p></div>
+                    <div class="tab-pane fade" id="ci-lvl2"><p class="mb-0">{{ __('messages.ci_lvl2_desc') }}</p></div>
+                    <div class="tab-pane fade" id="ci-lvl3"><p class="mb-0">{{ __('messages.ci_lvl3_desc') }}</p></div>
+                </div>
+
+                {{-- Format --}}
+                <h5 class="fw-bold mt-4"><i class="fa-solid fa-display text-primary me-2"></i>{{ __('messages.format_title') }}</h5>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm"><div class="card-body">
+                            <h6 class="fw-bold"><i class="fa-solid fa-school text-success me-2"></i>{{ __('messages.format_offline') }}</h6>
+                            <p class="mb-0 small text-muted">{{ __('messages.format_offline_desc') }}</p>
+                        </div></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm"><div class="card-body">
+                            <h6 class="fw-bold"><i class="fa-solid fa-video text-primary me-2"></i>{{ __('messages.format_online') }}</h6>
+                            <p class="mb-0 small text-muted">{{ __('messages.format_online_desc') }}</p>
+                        </div></div>
                     </div>
                 </div>
+
+                {{-- Tipe layanan --}}
+                <h5 class="fw-bold mt-4"><i class="fa-solid fa-handshake text-primary me-2"></i>{{ __('messages.services_type_title') }}</h5>
+                <div class="row g-3">
+                    @foreach ([['regular','fa-users'],['private','fa-user-check'],['corporate','fa-building']] as $svc)
+                        @php $key = $svc[0]; @endphp
+                        <div class="col-md-4">
+                            <div class="card h-100 border-0 shadow-sm"><div class="card-body p-3">
+                                <h6 class="fw-bold mb-1"><i class="fa-solid {{ $svc[1] }} text-warning me-2"></i>{{ __("messages.svc_type_{$key}") }}
+                                    @if($key === 'private' || $key === 'corporate')<span class="badge bg-secondary ms-1">+</span>@endif
+                                </h6>
+                                <p class="mb-0 small text-muted">{{ __("messages.svc_type_{$key}_desc") }}</p>
+                            </div></div>
+                        </div>
+                    @endforeach
+                </div>
+
+                {{-- CTA Bahasa Indonesia --}}
+                <div class="mt-4 p-3 rounded-3 d-flex flex-wrap gap-3 align-items-center justify-content-between" style="background: linear-gradient(135deg, #b03a3a 10%, #fff 90%); border:1px solid #f5c2c2;">
+                    <div>
+                        <div class="fw-bold" style="color:#7a1f1f;"><i class="fa-solid fa-fire me-1"></i> {{ __('messages.prog_indo') }} — {{ __('messages.badge_flagship') }}</div>
+                        <div class="small text-muted">{{ __('messages.register_now') }} &bull; {{ __('messages.consultation') }} gratis</div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-danger px-4 fw-bold shadow-sm"><i class="fa-solid fa-pen-to-square me-1"></i> {{ __('messages.register_now') }}</a>
+                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-outline-danger bg-white px-3">{{ __('messages.consultation') }}</a>
+                    </div>
+                </div>
+
+                {{-- Program lainnya --}}
+                <div class="mt-4 d-flex gap-2 align-items-center flex-wrap">
+                    <span class="small text-muted fw-bold">{{ __('messages.other_programs') }}:</span>
+                    <a href="#mandarin" class="badge bg-light text-dark text-decoration-none p-2">🇨🇳 {{ __('messages.prog_mandarin') }}</a>
+                    <a href="#english" class="badge bg-light text-dark text-decoration-none p-2">🇬🇧 {{ __('messages.prog_english') }}</a>
+                </div>
+            </section>
+
+            <hr class="my-4">
+
+            {{-- ============================================================ --}}
+            {{-- PROGRAM 2: MANDARIN --}}
+            {{-- ============================================================ --}}
+            <section id="mandarin" class="py-4 course-section">
+                <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+                    <h2 class="fw-bold mb-0">🇨🇳 {{ __('messages.prog_mandarin') }}</h2>
+                    <span class="badge bg-primary">{{ __('messages.badge_online_privat') }}</span>
+                </div>
+                <p class="text-muted">{{ __('messages.cm_hero_desc') }}</p>
+
+                {{-- Jenjang stepper --}}
+                <h5 class="fw-bold mt-4"><i class="fa-solid fa-route text-primary me-2"></i>{{ __('messages.cm_tingkat_title') }}</h5>
+                <div class="position-relative ps-4 mandarin-path">
+                    @foreach ([[1,'fa-seedling'],[2,'fa-comments'],[3,'fa-briefcase']] as $t)
+                        <div class="pb-4 position-relative mandarin-step">
+                            <span class="step-dot"><i class="fa-solid {{ $t[1] }}"></i></span>
+                            <h6 class="fw-bold mb-1">{{ __("messages.cm_t{$t[0]}") }}</h6>
+                            <p class="mb-0 small text-muted">{{ __("messages.cm_t{$t[0]}_desc") }}</p>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="alert alert-info d-inline-flex align-items-center gap-2 mt-2 mb-0">
+                    <i class="fa-solid fa-bell"></i>
+                    <span><strong>{{ __('messages.coming_soon_offline') }}</strong></span>
+                </div>
+                <div class="mt-3">
+                    <span class="badge bg-dark p-2"><i class="fa-solid fa-building me-1"></i>{{ __('messages.svc_type_corporate') }}</span>
+                </div>
+
+                {{-- CTA Mandarin --}}
+                <div class="mt-4 p-3 rounded-3 d-flex flex-wrap gap-3 align-items-center justify-content-between" style="background: linear-gradient(135deg, #1a2a4f 10%, #fff 90%); border:1px solid #cbd5e1;">
+                    <div>
+                        <div class="fw-bold" style="color:#1a2a4f;"><i class="fa-solid fa-language me-1"></i> {{ __('messages.prog_mandarin') }} — {{ __('messages.badge_online_privat') }}</div>
+                        <div class="small text-muted">Online privat • Native speaker</div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-primary px-4 fw-bold shadow-sm"><i class="fa-solid fa-pen-to-square me-1"></i> {{ __('messages.register_now') }}</a>
+                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-outline-primary bg-white px-3">{{ __('messages.free_trial') }}</a>
+                    </div>
+                </div>
+
+                {{-- Program lainnya --}}
+                <div class="mt-4 d-flex gap-2 align-items-center flex-wrap">
+                    <span class="small text-muted fw-bold">{{ __('messages.other_programs') }}:</span>
+                    <a href="#bahasa-indonesia" class="badge bg-light text-dark text-decoration-none p-2">🇮🇩 {{ __('messages.prog_indo') }}</a>
+                    <a href="#english" class="badge bg-light text-dark text-decoration-none p-2">🇬🇧 {{ __('messages.prog_english') }}</a>
+                </div>
+            </section>
+
+            <hr class="my-4">
+
+            {{-- ============================================================ --}}
+            {{-- PROGRAM 3: ENGLISH --}}
+            {{-- ============================================================ --}}
+            <section id="english" class="py-4 course-section">
+                <div class="d-flex align-items-center gap-2 flex-wrap mb-2">
+                    <h2 class="fw-bold mb-0">🇬🇧 {{ __('messages.prog_english') }}</h2>
+                    <span class="badge bg-success">{{ __('messages.badge_small_class') }}</span>
+                </div>
+                <p class="text-muted">{{ __('messages.ce_hero_desc') }}</p>
+
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold"><i class="fa-solid fa-chart-simple text-success me-2"></i>{{ __('messages.ce_placement_title') }}</h5>
+                        <p class="mb-0 text-muted">{{ __('messages.ce_placement_desc') }}</p>
+                    </div>
+                </div>
+
+                {{-- CTA English --}}
+                <div class="mt-4 p-3 rounded-3 d-flex flex-wrap gap-3 align-items-center justify-content-between" style="background: linear-gradient(135deg, #2d6a4f 10%, #fff 90%); border:1px solid #c3e6cb;">
+                    <div>
+                        <div class="fw-bold" style="color:#1b4332;"><i class="fa-solid fa-graduation-cap me-1"></i> {{ __('messages.prog_english') }} — {{ __('messages.badge_small_class') }}</div>
+                        <div class="small text-muted">Placement test gratis • Max 4 siswa</div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-success px-4 fw-bold shadow-sm"><i class="fa-solid fa-pen-to-square me-1"></i> {{ __('messages.register_now') }}</a>
+                        <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-outline-success bg-white px-3">{{ __('messages.free_trial') }}</a>
+                    </div>
+                </div>
+
+                {{-- Program lainnya --}}
+                <div class="mt-4 d-flex gap-2 align-items-center flex-wrap">
+                    <span class="small text-muted fw-bold">{{ __('messages.other_programs') }}:</span>
+                    <a href="#bahasa-indonesia" class="badge bg-light text-dark text-decoration-none p-2">🇮🇩 {{ __('messages.prog_indo') }}</a>
+                    <a href="#mandarin" class="badge bg-light text-dark text-decoration-none p-2">🇨🇳 {{ __('messages.prog_mandarin') }}</a>
+                </div>
+            </section>
+
+            <hr class="my-4">
+
+            {{-- CTA akhir --}}
+            <section class="py-4 text-white rounded-3 px-4 text-center" style="background: linear-gradient(135deg, #1a2a4f 0%, #2d4a7a 100%);">
+                <h4 class="fw-bold mb-2">{{ __('messages.cta_final_title') }}</h4>
+                <p class="mb-3">{{ __('messages.cta_final_desc') }}</p>
+                <a href="{{ url(app()->getLocale() . '/contact') }}" class="btn btn-warning fw-bold px-4">{{ __('messages.register_now') }}</a>
+            </section>
+
+            <div class="text-center py-3">
+                <a href="#overview" class="btn btn-link btn-sm text-decoration-none"><i class="fa-solid fa-arrow-up me-1"></i>{{ __('messages.back_to_top_courses') }}</a>
             </div>
-        @empty
-            <div class="col-12 text-center">
-                <p>{{ __('messages.no_courses') }}</p>
-            </div>
-        @endforelse
+        </div>
     </div>
 </div>
+
+<style>
+    .course-sidebar { top: 90px; }
+    #courses-nav .list-group-item { font-size: .95rem; }
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 80px; }
+
+    /* Mandarin stepper */
+    .mandarin-path::before {
+        content: ''; position: absolute; left: 15px; top: 8px; bottom: 24px;
+        width: 3px; background: linear-gradient(#b03a3a, #2d4a7a); border-radius: 2px;
+    }
+    .mandarin-step:last-child { padding-bottom: 0; }
+    .step-dot {
+        position: absolute; left: -32px; top: 0;
+        width: 34px; height: 34px; border-radius: 50%;
+        background: #fff; border: 3px solid #2d4a7a;
+        display: inline-flex; align-items: center; justify-content: center;
+        color: #2d4a7a; font-size: .85rem;
+    }
+</style>
+
+{{-- ScrollSpy Bootstrap --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const main = document.querySelector('main');
+        if (main && window.bootstrap) {
+            new bootstrap.ScrollSpy(main, {
+                target: '#courses-nav',
+                rootMargin: '-20% 0px -70% 0px'
+            });
+        }
+    });
+</script>
+
 @endsection
