@@ -16,7 +16,9 @@ Diperbarui: 21 Sep 2026 (detail lengkap di `HANDOVER/README.md` + `REVIEW.md`)
 - Stat resmi: **10.000+ siswa, sejak 2012, 100+ mitra** (bukan 20.000/2019/50)
 - QR asli di `public/images/qr-1..5.png` + `wechat-qr.png` (BUKAN `public/qrcodes/`)
 - `vercel-preview/` static export USANG — tidak memuat admin/form/DB
-- Test suite: `php artisan test` → 23 passed (73 assertions)
+- Test suite: `php artisan test` → 29 passed (93 assertions)
+- Logo navbar/footer = **SVG inline** via partial `_logo-long/_logo-square` — ganti logo: timpa PNG → `php artisan logo:regenerate`; JANGAN render logo sebagai `<img>` atau pakai rule `img{background}` global (bug logo-kotak-putih, commit cc19cd0)
+- Tim (7 orang) kini dari DB `team_members` via `/admin` → Konten → Tim (fallback `config/team.php`)
 
 ## Sisa kerja
 1. Gallery foto asli (upload via admin — tabel siap)

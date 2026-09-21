@@ -125,7 +125,7 @@
 - [x] Back to top button — `#backToTop` floating ↑ + JS scroll >300px + smooth `scrollTo`
 - [x] Breadcrumb — `Beranda › ...` auto segments di `layouts/app.blade.php`
 - [x] Sticky CTA mobile — bottom bar `WA | WeChat | Kontak` fixed `d-md-none` + `body padding-bottom`
-- [x] Loading state / skeleton — CSS `skeletonShimmer` + `img background #e9ecef`
+- [x] Loading state / skeleton — CSS `skeletonShimmer` via opt-in class `.loading-skeleton` (rule global `img{background:#e9ecef}` **dihapus 21 Sep** — area transparan PNG menampilkan background elemen sehingga logo putih tampak kotak; lihat commit cc19cd0)
 - [x] Slider indikator — dot 3 titik `.uni-dots` di `home.blade.php`
 - [x] Footer sitemap — home/about/courses/services/gallery/contact lengkap
 - [x] 404 custom — `resources/views/errors/404.blade.php`
@@ -141,7 +141,7 @@
 - [x] **Analytics**: kerangka GA4 via `.env` (`GA_MEASUREMENT_ID`) + event `whatsapp_click`/`wechat_open`
 - [x] Upgrade Bootstrap 5.3.0-alpha1 → **5.3.3**, Font Awesome beta → **6.7.2**
 - [x] `.env.example` + `WHATSAPP_NUMBER` terpusat di config
-- [x] Feature test security: **`php artisan test` → 23 passed**
+- [x] Feature test security: **`php artisan test` → 29 passed (93 assertions)**
 - [ ] CSP enforce (pantau report 1–2 hari)
 - [ ] VPS Hosting + MySQL + domain custom (`iflanguage.com`/`ifls.id`) — **Fase 6, butuh akses VPS & domain**
 
@@ -154,6 +154,18 @@
 - [x] Nomor WA terpusat: 0 hardcode `628118887568` di courses — semua via `config('services.whatsapp.number')`
 - [x] `CourseContentSeeder` membaca lang files (teks 100% identik) + test `CoursesCmsTest` (render DB, fallback, harga null, anchor, admin)
 - [x] Menambah program baru (mis. Bahasa Jepang) kini cukup dari `/admin` — tanpa kode
+
+### Fase 5.5 — Revisi Tampilan & Logo SVG ✅ SELESAI (21 Sep 2026)
+- [x] Logo navbar/footer: PNG (padding transparan 37%) di-crop ulang → **divektorisasi ke SVG inline** (commit 0887017)
+- [x] Card hero beranda & card services: teks hardcode Indonesia → **17 lang keys baru** (ikut terjemahan EN/ZH)
+- [x] Tim profesional: foto bulat 64px → **kotak rounded 128px** (direksi 200px) + masuk CMS (tabel `team_members`, resource `/admin` → Konten → Tim, upload foto SafeImage + i18n jabatan/bio; fallback config; test `TeamCmsTest`)
+
+**Arsitektur logo SVG (jangan kembalikan ke `<img>` PNG):**
+- Sumber: `public/logo.png` & `public/logo-square.png` (putih + alpha, glyph penuh tanpa padding)
+- Output: `public/logo.svg` + `public/logo-square.svg` (path `fill=currentColor`, `fill-rule=evenodd`) — untuk OG/JSON-LD
+- Dipakai di view via partial self-contained: `resources/views/layouts/_logo-long.blade.php` (navbar) & `_logo-square.blade.php` (footer) — inline SVG `fill="currentColor"`, warna otomatis ikut konteks (putih di navbar gelap), mustahil kena bug rule `img{background}` lagi
+- **Regenerasi** (setelah ganti PNG sumber): `php artisan logo:regenerate` — pipeline marching-squares + RDP (eps 1.0 @400px) + tulis ulang SVG & partial; output deterministik (fidelity terverifikasi IoU 0.93/0.89). Lalu `view:clear` bila perlu, commit hasilnya
+- Larangan: JANGAN tambah rule global `img{background:...}` / JANGAN render logo sebagai `<img>` di atas latar gelap
 
 ---
 

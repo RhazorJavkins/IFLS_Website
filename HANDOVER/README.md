@@ -53,11 +53,20 @@ Website IF Language School — lembaga bahasa Indonesia⇄China. Kronologi resmi
 | Blog | `/admin` → Artikel Blog | `posts` (slug, cover, publish) | `blog_post1..3` |
 | Halaman Courses | `/admin` → Kursus: Program / Kelas / Paket Harga | `programs`, `program_features`, `pricing_plans`, `courses`, `schedules` | hardcode di `courses/index.blade.php` |
 | Lead form kontak | `/admin` → Leads Kontak | `contact_leads` (+`contacted_at`) | — |
+| Tim (direksi & staf) | `/admin` → Konten → Tim | `team_members` (jabatan/bio i18n, foto, flag direksi/beranda) | `config/team.php` |
 
 - **Anchor courses = slug program** (`courses#mandarin` dari beranda) — jangan ganti slug program yang sudah publish
 - **Harga kelas null** = tampil "Hubungi untuk harga" (kebijakan resmi)
 - **Nomor WA** terpusat di `.env` → `WHATSAPP_NUMBER` (0 hardcode di views courses)
 - Detail blog: `/{locale}/blog/{slug}` — meta description otomatis dari excerpt
+
+### Logo = SVG inline (BUKAN `<img>` PNG) — PENTING
+Logo navbar & footer adalah **inline SVG** (`fill="currentColor"`) yang digenerate dari PNG:
+- Sumber: `public/logo.png`, `public/logo-square.png` (harus putih + alpha, tanpa padding)
+- Output: `public/logo.svg`, `public/logo-square.svg` + partial `resources/views/layouts/_logo-long/_logo-square.blade.php`
+- **Ganti logo** → timpa PNG sumber → jalankan `php artisan logo:regenerate` → commit hasilnya
+- **JANGAN**: render logo sebagai `<img>` di latar gelap, atau menambah rule CSS global `img{background:...}` — area transparan gambar akan menampilkan background itu dan logo putih jadi kotak (bug yang pernah terjadi, commit cc19cd0). Skeleton loading hanya via opt-in class `.loading-skeleton`
+- File `resources/views/welcome.blade.php` sengaja dihapus (stub Laravel dengan CSS Tailwind dark-mode tanpa rute) — jangan dibuat ulang
 
 ---
 
@@ -73,8 +82,10 @@ Website IF Language School — lembaga bahasa Indonesia⇄China. Kronologi resmi
 ## Perintah sehari-hari
 ```bash
 php artisan serve --host=127.0.0.1 --port=8080  # dev server
-php artisan test                                 # 23 tests (73 assertions)
-php artisan db:seed --force                      # re-seed konten (idempotent)
+php artisan test                                 # 29 tests (93 assertions)
+php artisan db:seed --force                      # re-seed konten (idempotent, termasuk tim)
+php artisan db:seed --class=TeamSeeder --force   # re-seed tim saja (dari config/team.php)
+php artisan logo:regenerate                      # rebuild logo SVG + partial setelah ganti PNG
 php artisan db:backup                            # backup SQLite (otomatis 23:00, retensi 7)
 php artisan schedule:list                        # cek cron backup
 ```
