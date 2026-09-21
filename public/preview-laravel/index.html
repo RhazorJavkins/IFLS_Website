@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang di IF Language School</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .topbar { font-size: .78rem; letter-spacing:.2px; }
+        .navbar-premium { backdrop-filter: blur(10px); transition: box-shadow .2s ease; }
+        .navbar-premium.scrolled { box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important; }
+        .nav-link.active { font-weight:700; position:relative; }
+        .nav-link.active::after { content:""; position:absolute; left:8px; right:8px; bottom:4px; height:2px; background:#FFD166; border-radius:2px; }
+        @media (max-width: 991px) { .nav-link.active::after { display:none; } }
+    </style>
+</head>
+<body>
+
+    <!-- ======= TOPBAR ======= -->
+    <div class="topbar bg-dark text-white-50 py-2 d-none d-md-block border-bottom border-secondary border-opacity-25">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-3">
+                <span><i class="fa-solid fa-location-dot text-warning me-1"></i> Jakarta • Semarang • Surabaya</span>
+                <span class="d-none d-lg-inline"><i class="fa-solid fa-phone text-warning me-1"></i> +62 811-8887-568</span>
+                <span class="d-none d-xl-inline"><i class="fa-solid fa-envelope text-warning me-1"></i> info@iflanguage.com</span>
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+                <span class="d-none d-lg-inline"><i class="fa-solid fa-award text-warning me-1"></i> Lembaga bahasa mitra Badan Bahasa Kemendikbudristek</span>
+                <span class="vr bg-secondary opacity-25"></span>
+                <a href="https://wa.me/628118887568" target="_blank" class="text-white-50 text-decoration-none"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com/iflanguage" target="_blank" class="text-white-50 text-decoration-none"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com/@iflanguage" target="_blank" class="text-white-50 text-decoration-none"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" class="text-white-50 text-decoration-none"><i class="fa-brands fa-weixin" style="color:#07C160;"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======= NAVBAR PREMIUM ======= -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top navbar-premium shadow-sm" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="http://127.0.0.1:8080/id">
+                <img src="http://127.0.0.1:8080/logo.png" alt="IF Language School" height="42" style="display:inline-block; filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));">
+                <span class="fw-bold ms-2" style="letter-spacing:.3px;">IF Language School</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:8080/id">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link " href="http://127.0.0.1:8080/id/about">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link " href="http://127.0.0.1:8080/id/courses">Kursus</a></li>
+                    <li class="nav-item"><a class="nav-link " href="http://127.0.0.1:8080/id/services">Terjemahan</a></li>
+                    <li class="nav-item"><a class="nav-link " href="http://127.0.0.1:8080/id/blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link " href="http://127.0.0.1:8080/id/gallery">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link " href="http://127.0.0.1:8080/id/contact">Kontak</a></li>
+
+                    <!-- DROPDOWN SWITCH BAHASA -->
+                    <li class="nav-item dropdown ms-lg-2">
+                        <a class="nav-link dropdown-toggle border rounded-pill px-3" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown" style="border-color: #495057 !important; font-size:.85rem;">
+                            🌐 ID
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow">
+                                                        <li><a class="dropdown-item" href="http://127.0.0.1:8080/id">🇮🇩 Indonesia</a></li>
+                            <li><a class="dropdown-item" href="http://127.0.0.1:8080/en">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item" href="http://127.0.0.1:8080/zh">🇨🇳 中文</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <a href="https://wa.me/628118887568?text=Halo%20IF%20Language%20School" target="_blank" class="btn btn-warning btn-sm fw-bold px-3 rounded-pill">
+                            <i class="fa-brands fa-whatsapp me-1"></i> Daftar Sekarang
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======= CONTENT ======= -->
+    <main>
+        
+
+<section class="hero-premium text-white position-relative overflow-hidden" style="background: linear-gradient(135deg, #0f1e3a 0%, #1a2a4f 45%, #2d4a7a 70%, #b03a3a 100%); padding: 90px 0 80px;">
+    <div class="container position-relative" style="z-index:2;">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 text-center text-lg-start">
+                                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 shadow-sm fw-semibold" style="letter-spacing:.3px; font-size:.75rem;"><i class="fa-solid fa-award me-1"></i> Lembaga bahasa mitra Badan Bahasa Kemendikbudristek</span>
+                                <h1 class="display-4 fw-bold mb-3" style="line-height:1.08; letter-spacing:-.5px;">
+                    Selamat Datang di IF Language School
+                    <span class="d-block" style="background: linear-gradient(90deg, #FFD166, #ff9a76); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Indonesia ⇄ China</span>
+                </h1>
+                <p class="lead mb-2" style="opacity:.92;">Pusat Kursus Bahasa &amp; Jasa Penerjemahan Terpercaya di Jakarta</p>
+                <p class="small mb-1" style="opacity:.70;"><i class="fa-solid fa-map-pin text-warning me-1"></i> Jakarta • Semarang • Surabaya — Offline &amp; Online</p>
+                <p class="small mb-4" style="opacity:.70;"><i class="fa-solid fa-language me-1 text-warning"></i> Kursus • Terjemahan Tersumpah • Interpreter — ID ⇄ CN ⇄ EN</p>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
+                    <a href="https://wa.me/628118887568?text=Halo%20IF%20Language%20School" target="_blank" class="btn btn-warning btn-lg px-4 fw-bold shadow">
+                        <i class="fa-brands fa-whatsapp me-1"></i> Daftar Sekarang
+                    </a>
+                    <a href="http://127.0.0.1:8080/id/courses" class="btn btn-outline-light btn-lg px-4">
+                        Lihat Program Kursus
+                    </a>
+                    <a href="http://127.0.0.1:8080/id/services" class="btn btn-light btn-lg px-4 fw-bold text-dark d-none d-sm-inline-flex align-items-center">
+                        <i class="fa-solid fa-language me-1 text-primary"></i> Terjemahan
+                    </a>
+                </div>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap mt-4 small" style="opacity:.75;">
+                    <span><i class="fa-solid fa-check-circle text-warning me-1"></i> 10.000+ alumni</span>
+                    <span><i class="fa-solid fa-check-circle text-warning me-1"></i> Penerjemah Tersumpah</span>
+                    <span><i class="fa-solid fa-check-circle text-warning me-1"></i> Online & Offline</span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative mx-auto" style="max-width: 460px;">
+                    
+                    <div class="bg-white rounded-4 p-4 shadow-lg text-dark position-relative" style="transform: rotate(-1.2deg);">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-3 d-flex align-items-center justify-content-center" style="width:52px;height:52px; background: linear-gradient(135deg, #1a2a4f, #b03a3a);">
+                                <i class="fa-solid fa-language text-white fa-lg"></i>
+                            </div>
+                            <div>
+                                <div class="fw-bold" style="letter-spacing:.5px;">ID ⇄ 中文 ⇄ EN</div>
+                                <div class="small text-muted">Kursus • Terjemahan • Interpreter</div>
+                            </div>
+                            <span class="badge bg-success ms-auto">Live</span>
+                        </div>
+                        <div class="bg-light rounded-3 p-3 mb-3">
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span class="text-muted">Kelas Bahasa Indonesia WNA</span><span class="fw-bold text-success">92% puas</span>
+                            </div>
+                            <div class="progress" style="height:7px;"><div class="progress-bar bg-success" style="width:92%"></div></div>
+                            <div class="d-flex justify-content-between small text-muted mt-1">
+                                <span><i class="fa-solid fa-users me-1"></i> 10.000+ siswa</span><span><i class="fa-solid fa-star text-warning me-1"></i> 4.9/5</span>
+                            </div>
+                        </div>
+                        <div class="row g-2 text-center small">
+                            <div class="col-4">
+                                <div class="bg-primary bg-opacity-10 rounded-3 py-2">
+                                    <div class="fw-bold text-primary">3</div><div class="text-muted" style="font-size:.65rem;">Kota</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="bg-warning bg-opacity-15 rounded-3 py-2">
+                                    <div class="fw-bold" style="color:#7a5200;">24J</div><div class="text-muted" style="font-size:.65rem;">Express</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="bg-success bg-opacity-10 rounded-3 py-2">
+                                    <div class="fw-bold text-success">Tersumpah</div><div class="text-muted" style="font-size:.65rem;">Resmi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="position-absolute bg-warning text-dark rounded-pill px-3 py-2 shadow fw-bold d-flex align-items-center gap-2" style="top:-12px; right:-10px; font-size:.78rem; transform: rotate(2deg);">
+                        <i class="fa-solid fa-certificate"></i> Mitra Kemendikbud
+                    </div>
+                    <div class="position-absolute bg-white text-dark rounded-3 px-3 py-2 shadow d-flex align-items-center gap-2" style="bottom:-18px; left:-14px; font-size:.78rem;">
+                        <span class="rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;background:#07C160;"><i class="fa-brands fa-weixin text-white"></i></span>
+                        <div class="text-start"><div class="fw-bold" style="font-size:.78rem;">WeChat & WhatsApp</div><div class="small text-muted" style="font-size:.68rem;">Balas &lt; 15 menit</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="position-absolute" style="right:-80px; top:-80px; width:420px; height:420px; background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%); border-radius:50%;"></div>
+    <div class="position-absolute" style="left:-100px; bottom:-100px; width:360px; height:360px; background: radial-gradient(circle, rgba(255,209,102,.10) 0%, transparent 70%); border-radius:50%;"></div>
+    
+    <div class="position-absolute bottom-0 start-0 w-100" style="line-height:0;">
+        <svg viewBox="0 0 1440 48" class="w-100" style="height:48px; display:block;" preserveAspectRatio="none">
+            <path d="M0,24 C240,48 480,0 720,24 C960,48 1200,0 1440,24 L1440,48 L0,48 Z" fill="#f8f9fa" fill-opacity="1"></path>
+        </svg>
+    </div>
+</section>
+
+
+<section class="py-5 bg-light border-bottom">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-6 col-md-4">
+                <h2 class="display-5 fw-bold text-primary mb-1">10,000+</h2>
+                <p class="text-muted mb-0">Siswa Sudah Belajar</p>
+            </div>
+            <div class="col-6 col-md-4">
+                <h2 class="display-5 fw-bold text-primary mb-1">2012</h2>
+                <p class="text-muted mb-0">Tahun Pengalaman</p>
+            </div>
+            <div class="col-6 col-md-4 mx-auto">
+                <h2 class="display-5 fw-bold text-primary mb-1">100+</h2>
+                <p class="text-muted mb-0">Mitra Korporat</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Program Unggulan Kami</h2>
+            <p class="text-muted mx-auto" style="max-width: 600px;">Pilih program yang sesuai dengan tujuanmu — dari Mandarin untuk karier hingga Bahasa Indonesia untuk WNA.</p>
+        </div>
+        <div class="row g-4">
+                            <div class="col-md-6 col-lg-3">
+                    <a href="http://127.0.0.1:8080/id/courses#mandarin" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm program-card">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3"><i class="fa-solid fa-language fa-2x" style="color: #b03a3a"></i></div>
+                                <h5 class="card-title fw-bold text-dark">Bahasa Mandarin</h5>
+                                <p class="card-text small text-muted">Untuk pelajar &amp; profesional Indonesia yang ingin membuka peluang karier dan bisnis dengan China.</p>
+                                <span class="small fw-bold" style="color: #b03a3a">Baca Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                            <div class="col-md-6 col-lg-3">
+                    <a href="http://127.0.0.1:8080/id/courses#bahasa-indonesia" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm program-card">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3"><i class="fa-solid fa-earth-asia fa-2x" style="color: #1a2a4f"></i></div>
+                                <h5 class="card-title fw-bold text-dark">Bahasa Indonesia untuk WNA</h5>
+                                <p class="card-text small text-muted">Program intensif bagi ekspatriat &amp; mahasiswa China: komunikasi sehari-hari, budaya, dan bisnis di Indonesia.</p>
+                                <span class="small fw-bold" style="color: #1a2a4f">Baca Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                            <div class="col-md-6 col-lg-3">
+                    <a href="http://127.0.0.1:8080/id/courses#english" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm program-card">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3"><i class="fa-solid fa-graduation-cap fa-2x" style="color: #2d6a4f"></i></div>
+                                <h5 class="card-title fw-bold text-dark">Bahasa Inggris</h5>
+                                <p class="card-text small text-muted">Kelas umum, persiapan IELTS/TOEFL, dan English for Business untuk semua level.</p>
+                                <span class="small fw-bold" style="color: #2d6a4f">Baca Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                            <div class="col-md-6 col-lg-3">
+                    <a href="http://127.0.0.1:8080/id/courses#bahasa-indonesia" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm program-card">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3"><i class="fa-solid fa-briefcase fa-2x" style="color: #7a5200"></i></div>
+                                <h5 class="card-title fw-bold text-dark">Corporate Training</h5>
+                                <p class="card-text small text-muted">Pelatihan bahasa in-house untuk perusahaan, disusun sesuai kebutuhan industri tim Anda.</p>
+                                <span class="small fw-bold" style="color: #7a5200">Baca Selengkapnya <i class="fa-solid fa-arrow-right ms-1"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                    </div>
+        <div class="text-center mt-4">
+            <a href="http://127.0.0.1:8080/id/courses" class="btn btn-primary px-4">
+                Lihat Semua Kursus <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-danger bg-opacity-10 text-danger px-3 py-2 mb-3 fw-semibold">Layanan Terjemahan</span>
+            <h2 class="fw-bold mb-2">Solusi Alih Bahasa Lengkap</h2>
+            <p class="text-muted mx-auto" style="max-width:620px;">Dari dokumen harian hingga legalitas resmi, video &amp; interpreter — semua ada. — <a href="http://127.0.0.1:8080/id/services" class="text-decoration-none fw-bold">Terjemahan <i class="fa-solid fa-arrow-right ms-1"></i></a></p>
+        </div>
+
+        <div class="row g-4">
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 translate-card">
+                    <div class="mx-auto mb-3 rounded-3 d-flex align-items-center justify-content-center" style="width:56px;height:56px;background:#e8f0ff;color:#1a2a4f;">
+                        <i class="fa-solid fa-file-lines fa-lg"></i>
+                    </div>
+                    <h6 class="fw-bold mb-1">Terjemahan Dokumen</h6>
+                    <p class="small text-muted mb-2">Terjemahan umum yang rapi &amp; akurat untuk kebutuhan bisnis dan personal.</p>
+                    <div class="small text-muted mb-3" style="font-size:.75rem;">ID ⇄ CN ⇄ EN • PDF, Word, Excel, PPT</div>
+                    <a href="http://127.0.0.1:8080/id/services#layanan" class="btn btn-outline-primary btn-sm w-100">Minta Penawaran</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 translate-card" style="border:1.5px solid #FFD166 !important;">
+                    <span class="badge bg-warning text-dark position-absolute top-0 start-50 translate-middle px-2" style="font-size:.65rem;"><i class="fa-solid fa-star me-1"></i>Rekomendasi</span>
+                    <div class="mx-auto mb-3 rounded-3 d-flex align-items-center justify-content-center" style="width:56px;height:56px;background:#fff3cd;color:#7a5200;">
+                        <i class="fa-solid fa-certificate fa-lg"></i>
+                    </div>
+                    <h6 class="fw-bold mb-1">Terjemahan Tersumpah</h6>
+                    <p class="small text-muted mb-2">Dikerjakan penerjemah tersumpah untuk keperluan resmi &amp; legal.</p>
+                    <div class="small mb-3" style="font-size:.75rem; color:#7a5200;">Sah untuk Kedutaan, Kemenkumham, Imigrasi</div>
+                    <a href="http://127.0.0.1:8080/id/services#layanan" class="btn btn-warning btn-sm w-100 fw-bold">Minta Penawaran</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 translate-card">
+                    <div class="mx-auto mb-3 rounded-3 d-flex align-items-center justify-content-center" style="width:56px;height:56px;background:#ffe8e8;color:#b03a3a;">
+                        <i class="fa-solid fa-closed-captioning fa-lg"></i>
+                    </div>
+                    <h6 class="fw-bold mb-1">Video Translation</h6>
+                    <p class="small text-muted mb-2">Buat videomu dipahami audiens global dengan subtitle &amp; transkrip akurat.</p>
+                    <div class="small text-muted mb-3" style="font-size:.75rem;">YouTube • TikTok • E-learning</div>
+                    <a href="http://127.0.0.1:8080/id/services#layanan" class="btn btn-outline-dark btn-sm w-100">Minta Penawaran</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 translate-card">
+                    <div class="mx-auto mb-3 rounded-3 d-flex align-items-center justify-content-center" style="width:56px;height:56px;background:#e6f4ea;color:#1b4332;">
+                        <i class="fa-solid fa-comments fa-lg"></i>
+                    </div>
+                    <h6 class="fw-bold mb-1">Layanan Interpreter</h6>
+                    <p class="small text-muted mb-2">Pendamping bahasa profesional untuk meeting &amp; acara penting.</p>
+                    <div class="small mb-3" style="font-size:.75rem; color:#1b4332;">On-site & Online</div>
+                    <a href="http://127.0.0.1:8080/id/services#layanan" class="btn btn-success btn-sm w-100">Minta Penawaran</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="http://127.0.0.1:8080/id/services" class="btn btn-danger px-4 fw-bold">
+                Lihat Semua Layanan Terjemahan <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Mengapa Memilih Kami?</h2>
+        </div>
+        <div class="row g-4">
+                            <div class="col-md-4 text-center">
+                    <div class="display-6 mb-2">
+                        <i class="fa-solid fa-certificate text-warning"></i>
+                                            </div>
+                    <h5 class="fw-bold">Guru Bersertifikat</h5>
+                    <p class="text-muted small">Semua guru tersertifikasi dan berpengalaman lebih dari 5 tahun.</p>
+                </div>
+                            <div class="col-md-4 text-center">
+                    <div class="display-6 mb-2">
+                        <i class="fa-solid fa-users text-primary"></i>
+                                            </div>
+                    <h5 class="fw-bold">Kelas Kecil</h5>
+                    <p class="text-muted small">Maksimal 10 siswa per kelas agar setiap orang mendapat perhatian.</p>
+                </div>
+                            <div class="col-md-4 text-center">
+                    <div class="display-6 mb-2">
+                        <i class="fa-solid fa-clock text-success"></i>                    </div>
+                    <h5 class="fw-bold">Fleksibel</h5>
+                    <p class="text-muted small">Pilih jadwal online atau offline, pagi sampai malam.</p>
+                </div>
+                    </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-light border-top border-bottom">
+    <div class="container">
+        <div class="text-center mb-4">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3"><i class="fa-solid fa-graduation-cap me-1"></i> Kampus Partner</span>
+            <h2 class="fw-bold mb-2">Bekerjasama dengan Universitas</h2>
+            <p class="text-muted mx-auto" style="max-width:640px;">Kolaborasi resmi dengan perguruan tinggi ternama untuk program bahasa &amp; pengembangan SDM.</p>
+        </div>
+        <div class="position-relative uni-slider-wrap">
+            <button class="btn btn-light shadow-sm rounded-circle position-absolute top-50 start-0 translate-middle-y d-none d-md-flex align-items-center justify-content-center uni-prev" type="button" data-target="uniSliderHome" style="width:38px;height:38px; z-index:2; left:-12px !important;"><i class="fa-solid fa-chevron-left small"></i></button>
+            <button class="btn btn-light shadow-sm rounded-circle position-absolute top-50 end-0 translate-middle-y d-none d-md-flex align-items-center justify-content-center uni-next" type="button" data-target="uniSliderHome" style="width:38px;height:38px; z-index:2; right:-12px !important;"><i class="fa-solid fa-chevron-right small"></i></button>
+            <div id="uniSliderHome" class="uni-slider d-flex gap-3 overflow-auto flex-nowrap pb-2 px-1" style="scroll-snap-type:x mandatory; scrollbar-width:none; -ms-overflow-style:none;">
+                                                    <div class="flex-shrink-0" style="width:240px; scroll-snap-align:start;">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 uni-card">
+                            <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width:56px;height:56px;background:#1a2a4f;">UI</div>
+                            <h6 class="fw-bold mb-1" style="font-size:.85rem;">Universitas Indonesia</h6>
+                            <div class="small text-muted">Depok</div>
+                        </div>
+                    </div>
+                                    <div class="flex-shrink-0" style="width:240px; scroll-snap-align:start;">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 uni-card">
+                            <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width:56px;height:56px;background:#b03a3a;">UNPAD</div>
+                            <h6 class="fw-bold mb-1" style="font-size:.85rem;">Universitas Padjadjaran</h6>
+                            <div class="small text-muted">Jatinangor</div>
+                        </div>
+                    </div>
+                                    <div class="flex-shrink-0" style="width:240px; scroll-snap-align:start;">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 uni-card">
+                            <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width:56px;height:56px;background:#2d6a4f;">UAI</div>
+                            <h6 class="fw-bold mb-1" style="font-size:.85rem;">Universitas Al Azhar Indonesia</h6>
+                            <div class="small text-muted">Jakarta</div>
+                        </div>
+                    </div>
+                                    <div class="flex-shrink-0" style="width:240px; scroll-snap-align:start;">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 uni-card">
+                            <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width:56px;height:56px;background:#7a5200;">UBM</div>
+                            <h6 class="fw-bold mb-1" style="font-size:.85rem;">Universitas Bunda Mulia</h6>
+                            <div class="small text-muted">Jakarta</div>
+                        </div>
+                    </div>
+                                    <div class="flex-shrink-0" style="width:240px; scroll-snap-align:start;">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 uni-card">
+                            <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width:56px;height:56px;background:#1a2a4f;">UGM</div>
+                            <h6 class="fw-bold mb-1" style="font-size:.85rem;">Universitas Gadjah Mada</h6>
+                            <div class="small text-muted">Yogyakarta</div>
+                        </div>
+                    </div>
+                                    <div class="flex-shrink-0" style="width:240px; scroll-snap-align:start;">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-4 uni-card">
+                            <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width:56px;height:56px;background:#b03a3a;">UNPAD+</div>
+                            <h6 class="fw-bold mb-1" style="font-size:.85rem;">Universitas Padjadjaran Ekstensi</h6>
+                            <div class="small text-muted">Bandung</div>
+                        </div>
+                    </div>
+                            </div>
+            <div class="text-center small text-muted mt-2 d-md-none"><i class="fa-solid fa-arrows-left-right me-1"></i> Geser untuk melihat lainnya</div>
+        </div>
+        <div class="text-center mt-3">
+            <a href="http://127.0.0.1:8080/id/about#universitas" class="btn btn-outline-primary px-4">Lihat Kerjasama Kampus <i class="fa-solid fa-arrow-right ms-1"></i></a>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3">Tim Profesional</span>
+            <h2 class="fw-bold mb-2">Dipimpin Tim Berpengalaman</h2>
+            <p class="text-muted mx-auto" style="max-width:640px;">Kenali direksi &amp; tim inti yang memastikan mutu terbaik di 3 kota kami.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 team-home-card">
+                    <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width:64px;height:64px; background: linear-gradient(135deg, #1a2a4f, #b03a3a);">易</div>
+                    <h6 class="fw-bold mb-0 small">易衍 YI YAN</h6>
+                    <div class="small text-muted" style="font-size:.72rem;">董事长 Chairman</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 team-home-card">
+                    <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width:64px;height:64px; background: linear-gradient(135deg, #7a5200, #d4a017);">刘</div>
+                    <h6 class="fw-bold mb-0 small">刘裕洁 Amber</h6>
+                    <div class="small text-muted" style="font-size:.72rem;">Director</div>
+                </div>
+            </div>
+                                        <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 team-home-card">
+                        <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white small fw-bold" style="width:64px;height:64px; background: #1a2a4f;">
+                            玉
+                        </div>
+                        <h6 class="fw-bold mb-0 small">玉雪慧 <span class="fw-normal text-muted">Xiao Yu</span></h6>
+                        <div class="small text-muted" style="font-size:.70rem;">General Manager</div>
+                    </div>
+                </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 team-home-card">
+                        <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white small fw-bold" style="width:64px;height:64px; background: #b03a3a;">
+                            潘
+                        </div>
+                        <h6 class="fw-bold mb-0 small">潘炫颖 <span class="fw-normal text-muted">Novi</span></h6>
+                        <div class="small text-muted" style="font-size:.70rem;">Training Director</div>
+                    </div>
+                </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 team-home-card">
+                        <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white small fw-bold" style="width:64px;height:64px; background: #2d6a4f;">
+                            洪
+                        </div>
+                        <h6 class="fw-bold mb-0 small">洪莉莎 <span class="fw-normal text-muted">Elissa</span></h6>
+                        <div class="small text-muted" style="font-size:.70rem;">Curriculum Supervisor</div>
+                    </div>
+                </div>
+                            <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 team-home-card">
+                        <div class="mx-auto mb-3 rounded-circle d-flex align-items-center justify-content-center text-white small fw-bold" style="width:64px;height:64px; background: #7a5200;">
+                            李
+                        </div>
+                        <h6 class="fw-bold mb-0 small">李美慧 <span class="fw-normal text-muted">Susanty</span></h6>
+                        <div class="small text-muted" style="font-size:.70rem;">Academic Supervisor</div>
+                    </div>
+                </div>
+                    </div>
+
+        <div class="text-center mt-4">
+            <a href="http://127.0.0.1:8080/id/about" class="btn btn-outline-primary px-4">
+                Lihat Profil Lengkap <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-dark bg-opacity-10 text-dark px-3 py-2 mb-3">Partner Terpercaya</span>
+            <h2 class="fw-bold mb-2">Dipercaya 100+ Perusahaan</h2>
+            <p class="text-muted mx-auto" style="max-width:620px;">Multinasional, perbankan, manufaktur, kampus &amp; edukasi mempercayakan kebutuhan bahasanya pada kami.</p>
+        </div>
+
+        <div class="row g-3 align-items-stretch justify-content-center">
+                                        <div class="col-6 col-md-3 col-lg-2">
+                    <div class="partner-home-card bg-white border rounded-3 d-flex flex-column align-items-center justify-content-center text-center p-3 h-100 shadow-sm">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-2 fw-bold text-white" style="width:44px;height:44px;background:#ff0000; font-size:.8rem;">
+                            HU
+                        </div>
+                        <div class="fw-bold small mb-0" style="font-size:.82rem;">Huawei</div>
+                        <div class="text-muted" style="font-size:.68rem;">Teknologi</div>
+                    </div>
+                </div>
+                            <div class="col-6 col-md-3 col-lg-2">
+                    <div class="partner-home-card bg-white border rounded-3 d-flex flex-column align-items-center justify-content-center text-center p-3 h-100 shadow-sm">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-2 fw-bold text-white" style="width:44px;height:44px;background:#b03a3a; font-size:.8rem;">
+                            BA
+                        </div>
+                        <div class="fw-bold small mb-0" style="font-size:.82rem;">Bank of China</div>
+                        <div class="text-muted" style="font-size:.68rem;">Perbankan</div>
+                    </div>
+                </div>
+                            <div class="col-6 col-md-3 col-lg-2">
+                    <div class="partner-home-card bg-white border rounded-3 d-flex flex-column align-items-center justify-content-center text-center p-3 h-100 shadow-sm">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-2 fw-bold text-white" style="width:44px;height:44px;background:#1a2a4f; font-size:.8rem;">
+                            SI
+                        </div>
+                        <div class="fw-bold small mb-0" style="font-size:.82rem;">Sinarmas</div>
+                        <div class="text-muted" style="font-size:.68rem;">Konglomerat</div>
+                    </div>
+                </div>
+                            <div class="col-6 col-md-3 col-lg-2">
+                    <div class="partner-home-card bg-white border rounded-3 d-flex flex-column align-items-center justify-content-center text-center p-3 h-100 shadow-sm">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-2 fw-bold text-white" style="width:44px;height:44px;background:#0d6efd; font-size:.8rem;">
+                            MI
+                        </div>
+                        <div class="fw-bold small mb-0" style="font-size:.82rem;">Midea</div>
+                        <div class="text-muted" style="font-size:.68rem;">Manufaktur</div>
+                    </div>
+                </div>
+                            <div class="col-6 col-md-3 col-lg-2">
+                    <div class="partner-home-card bg-white border rounded-3 d-flex flex-column align-items-center justify-content-center text-center p-3 h-100 shadow-sm">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-2 fw-bold text-white" style="width:44px;height:44px;background:#ff6a00; font-size:.8rem;">
+                            AL
+                        </div>
+                        <div class="fw-bold small mb-0" style="font-size:.82rem;">Alibaba</div>
+                        <div class="text-muted" style="font-size:.68rem;">E-commerce</div>
+                    </div>
+                </div>
+                            <div class="col-6 col-md-3 col-lg-2">
+                    <div class="partner-home-card bg-white border rounded-3 d-flex flex-column align-items-center justify-content-center text-center p-3 h-100 shadow-sm">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-2 fw-bold text-white" style="width:44px;height:44px;background:#198754; font-size:.8rem;">
+                            BY
+                        </div>
+                        <div class="fw-bold small mb-0" style="font-size:.82rem;">BYD</div>
+                        <div class="text-muted" style="font-size:.68rem;">Otomotif</div>
+                    </div>
+                </div>
+                            <div class="col-6 col-md-3 col-lg-2">
+                    <div class="partner-home-card bg-white border rounded-3 d-flex flex-column align-items-center justify-content-center text-center p-3 h-100 shadow-sm">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-2 fw-bold text-white" style="width:44px;height:44px;background:#7a1f1f; font-size:.8rem;">
+                            IC
+                        </div>
+                        <div class="fw-bold small mb-0" style="font-size:.82rem;">ICBC</div>
+                        <div class="text-muted" style="font-size:.68rem;">Keuangan</div>
+                    </div>
+                </div>
+                            <div class="col-6 col-md-3 col-lg-2">
+                    <div class="partner-home-card bg-white border rounded-3 d-flex flex-column align-items-center justify-content-center text-center p-3 h-100 shadow-sm">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mb-2 fw-bold text-white" style="width:44px;height:44px;background:#2d4a7a; font-size:.8rem;">
+                            TE
+                        </div>
+                        <div class="fw-bold small mb-0" style="font-size:.82rem;">Tencent</div>
+                        <div class="text-muted" style="font-size:.68rem;">Teknologi</div>
+                    </div>
+                </div>
+                    </div>
+
+        <div class="text-center mt-4">
+            <a href="http://127.0.0.1:8080/id/gallery" class="btn btn-outline-dark px-4">
+                Lihat Semua Partner <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Apa Kata Mereka?</h2>
+        </div>
+        <div class="row g-4">
+                                        <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold flex-shrink-0" style="width:48px;height:48px;background:#1a2a4f;">R</div>
+                                <div>
+                                    <p class="mb-0 fw-bold small">Rina — Marketing, Jakarta</p>
+                                    <div class="text-warning small">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-text fst-italic mb-0">“Setelah 6 bulan, saya berani presentasi dalam bahasa Mandarin ke klien. Pengajarnya sabar banget!”</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold flex-shrink-0" style="width:48px;height:48px;background:#b03a3a;">W</div>
+                                <div>
+                                    <p class="mb-0 fw-bold small">Wang Li — Ekspatriat, Jakarta</p>
+                                    <div class="text-warning small">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-text fst-italic mb-0">“Sebagai karyawan ekspatriat, kursus bahasa Indonesia membantu saya beradaptasi cepat dengan kehidupan dan pekerjaan di Jakarta. Sangat direkomendasikan!”</p>
+                        </div>
+                    </div>
+                </div>
+                            <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold flex-shrink-0" style="width:48px;height:48px;background:#2d6a4f;">B</div>
+                                <div>
+                                    <p class="mb-0 fw-bold small">Budi — Mahasiswa, Surabaya</p>
+                                    <div class="text-warning small">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-text fst-italic mb-0">“Kelasnya fleksibel, bisa online malam hari. IELTS saya naik dari 5.5 ke 7.0 dalam 4 bulan.”</p>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3"><i class="fa-solid fa-circle-question me-1"></i> FAQ</span>
+            <h2 class="fw-bold">Pertanyaan yang Sering Diajukan</h2>
+            <p class="text-muted mx-auto" style="max-width:560px;">Temukan jawaban untuk pertanyaan umum tentang program dan layanan kami.</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion accordion-flush" id="faqAccordion">
+                                        <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#faq0">
+                                Berapa lama untuk bisa fasih berbahasa Indonesia/Mandarin?
+                            </button>
+                        </h2>
+                        <div id="faq0" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">Tergantung tingkat awal dan intensitas belajar. Rata-rata, siswa regula mencapai tingkat percakapan sehari-hari dalam 3-6 bulan dengan kelas 2x seminggu. Kami menyediakan placement test gratis untuk menentukan level Anda.</div>
+                        </div>
+                    </div>
+                                        <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                Apakah ada kelas online?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse " data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">Ya! Semua program kami tersedia secara online via Zoom maupun offline di kampus Jakarta, Semarang, dan Surabaya. Kelas online cocok untuk Anda yang tinggal di luar kota atau memiliki jadwal padat.</div>
+                        </div>
+                    </div>
+                                        <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Apakah ada sertifikat setelah lulus?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse " data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">Ya. Setiap siswa yang menyelesaikan program akan menerima sertifikat resmi dari IF Language School. Sertifikat ini diakui oleh mitra korporat kami dan dapat digunakan untuk keperluan akademik maupun profesional.</div>
+                        </div>
+                    </div>
+                                        <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Bagaimana cara mendaftar?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse " data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">Anda bisa mendaftar langsung melalui WhatsApp (+62 811-8887-568), WeChat (ID: IFLanguageSchool), atau mengisi formulir di halaman kontak. Tim kami akan menghubungi Anda dalam 1x24 jam untuk konsultasi awal gratis.</div>
+                        </div>
+                    </div>
+                                        <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                Apakah ada program untuk perusahaan?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse " data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">Ya, kami menyediakan program corporate training yang bisa disesuaikan dengan kebutuhan perusahaan — mulai dari bahasa Indonesia untuk ekspatriat, bahasa Mandarin untuk bisnis, hingga bahasa Inggris untuk presentasi internasional. Hubungi kami untuk penawaran khusus.</div>
+                        </div>
+                    </div>
+                                        <div class="accordion-item border mb-2 rounded-3 overflow-hidden">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                Berapa biaya kursus?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse " data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">Biaya bervariasi tergantung program, durasi, dan format (online/offline, privat/kelompok). Hubungi kami untuk konsultasi gratis dan penawaran harga terbaik sesuai kebutuhan Anda.</div>
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 text-white text-center position-relative overflow-hidden" style="background: linear-gradient(135deg, #1a2a4f 0%, #2d4a7a 100%);">
+    <div class="container py-3 position-relative" style="z-index:2;">
+        <h2 class="fw-bold mb-3">Siap Mulai Perjalanan Bahasamu?</h2>
+        <p class="lead mb-2 mx-auto" style="max-width: 560px;">Gabung bersama lebih dari 10.000 peserta didik sejak 2012 — dipercaya 100+ perusahaan.</p>
+        <p class="small opacity-75 mb-4">Jakarta • Semarang • Surabaya — Offline &amp; Online • Mitra Penerjemah Tersumpah • 10.000+ Dokumen</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="http://127.0.0.1:8080/id/contact" class="btn btn-warning btn-lg px-4 fw-bold">
+                Daftar Sekarang
+            </a>
+            <a href="http://127.0.0.1:8080/id/services" class="btn btn-outline-light btn-lg px-4">
+                Layanan Terjemahan
+            </a>
+            <a href="http://127.0.0.1:8080/id/contact" class="btn btn-light btn-lg px-4 fw-bold text-dark">
+                Kelas percobaan gratis
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .program-card, .translate-card, .team-home-card, .partner-home-card { transition: transform .22s ease, box-shadow .22s ease; }
+    .program-card:hover, .translate-card:hover, .team-home-card:hover, .partner-home-card:hover { transform: translateY(-6px); box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.12) !important; }
+</style>
+
+    </main>
+
+    <!-- ======= FOOTER ======= -->
+    <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="http://127.0.0.1:8080/logo.png" alt="IF" height="36">
+                        <span class="fw-bold ms-2">IF Language School</span>
+                    </div>
+                    <p class="small text-white-50 mb-2">Pusat Kursus Bahasa &amp; Jasa Penerjemahan Terpercaya di Jakarta</p>
+                    <p class="small text-white-50 mb-0"><i class="fa-solid fa-location-dot text-warning me-1"></i> Jakarta • Semarang • Surabaya</p>
+                    <p class="small text-white-50"><i class="fa-solid fa-phone text-warning me-1"></i> +62 811-8887-568 • info@iflanguage.com</p>
+                </div>
+                <div class="col-6 col-md-4">
+                    <h6 class="fw-bold mb-3">Menu</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-1"><a href="http://127.0.0.1:8080/id/courses" class="text-white-50 text-decoration-none">Kursus</a></li>
+                        <li class="mb-1"><a href="http://127.0.0.1:8080/id/services" class="text-white-50 text-decoration-none">Terjemahan</a></li>
+                        <li class="mb-1"><a href="http://127.0.0.1:8080/id/about" class="text-white-50 text-decoration-none">Tentang Kami</a></li>
+                        <li class="mb-1"><a href="http://127.0.0.1:8080/id/gallery" class="text-white-50 text-decoration-none">Galeri</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-4">
+                    <h6 class="fw-bold mb-3">Kontak</h6>
+                    <div class="d-flex gap-2 mb-3">
+                        <a href="https://wa.me/628118887568" target="_blank" class="btn btn-success btn-sm rounded-circle" style="width:36px;height:36px; display:flex;align-items:center;justify-content:center;"><i class="fa-brands fa-whatsapp"></i></a>
+                        <button class="btn btn-light btn-sm rounded-circle" style="width:36px;height:36px; display:flex;align-items:center;justify-content:center;" data-bs-toggle="modal" data-bs-target="#wechatGlobalModal"><i class="fa-brands fa-weixin" style="color:#07C160;"></i></button>
+                        <a href="https://instagram.com/iflanguage" target="_blank" class="btn btn-dark btn-sm rounded-circle border border-secondary" style="width:36px;height:36px; display:flex;align-items:center;justify-content:center;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/iflanguage" target="_blank" class="btn btn-dark btn-sm rounded-circle border border-secondary" style="width:36px;height:36px; display:flex;align-items:center;justify-content:center;"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://tiktok.com/@iflanguage" target="_blank" class="btn btn-dark btn-sm rounded-circle border border-secondary" style="width:36px;height:36px; display:flex;align-items:center;justify-content:center;"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://www.xiaohongshu.com/user/profile/iflanguage" target="_blank" class="btn btn-dark btn-sm rounded-circle border border-secondary" style="width:36px;height:36px; display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-book-open" style="color:#FE2C55;"></i></a>
+                    </div>
+                    <p class="small text-white-50 mb-0">Senin–Jumat 08.30–17.30 WIB</p>
+                </div>
+            </div>
+            <hr class="border-secondary border-opacity-25 my-4">
+            <p class="small text-white-50 text-center mb-0">&copy; 2026 IF Language School • Lembaga bahasa mitra Badan Bahasa Kemendikbudristek • Bahasa: ID | EN | 中文</p>
+        </div>
+    </footer>
+
+    <!-- Global WeChat Modal -->
+    <div class="modal fade" id="wechatGlobalModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width:360px;">
+        <div class="modal-content border-0 shadow">
+          <div class="modal-header" style="background:#07C160;">
+            <h6 class="modal-title text-white fw-bold"><i class="fa-brands fa-weixin me-1"></i> WeChat</h6>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body text-center p-4">
+            <img src="http://127.0.0.1:8080/images/wechat-qr.png" alt="WeChat QR" class="img-fluid rounded-2 border p-2 mb-3" style="width:220px;">
+            <div class="fw-bold small" style="color:#07C160;">ID: IFLanguageSchool</div>
+            <div class="small text-muted">Scan di WeChat untuk konsultasi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>.uni-slider::-webkit-scrollbar{display:none;} .uni-slider{scroll-behavior:smooth;}</style>
+    <script>
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 10) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+        // Uni slider prev/next
+        document.addEventListener('click', function(e){
+            const btn = e.target.closest('.uni-prev, .uni-next');
+            if(!btn) return;
+            const id = btn.getAttribute('data-target');
+            const el = document.getElementById(id);
+            if(!el) return;
+            const dir = btn.classList.contains('uni-prev') ? -1 : 1;
+            el.scrollBy({left: dir*280, behavior:'smooth'});
+        });
+    </script>
+</body>
+</html>

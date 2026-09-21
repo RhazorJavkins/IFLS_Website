@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Terjemahan — IF Language School</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- ======= NAVBAR ======= -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="http://localhost:8000/id">
+                <img src="http://localhost:8000/logo.png" alt="IF Language School" height="40" style="display:inline-block;">
+                <span class="fw-bold ms-2">IF Language School</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:8000/id">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:8000/id/about">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:8000/id/courses">Kursus</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:8000/id/services">Terjemahan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:8000/id/blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:8000/id/gallery">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:8000/id/contact">Kontak</a></li>
+
+                    <!-- DROPDOWN SWITCH BAHASA -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown">
+                            🌐 ID
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                                                        <li>
+                                <a class="dropdown-item" href="http://localhost:8000/id">
+                                    🇮🇩 Indonesia
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="http://localhost:8000/en">
+                                    🇬🇧 English
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="http://localhost:8000/zh">
+                                    🇨🇳 中文
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======= CONTENT ======= -->
+    <main>
+        
+
+<section class="hero-translation text-white" style="background: linear-gradient(135deg, #1a2a4f 0%, #2d4a7a 55%, #b03a3a 100%); padding: 90px 0 80px;">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="badge bg-white text-dark mb-3 px-3 py-2 fw-semibold" style="letter-spacing:.5px; font-size:.78rem;">
+                    <i class="fa-solid fa-award me-1 text-primary"></i> Mitra Penerjemah Tersumpah • 20.000+ Dokumen
+                </span>
+                <h1 class="display-4 fw-bold mb-3" style="line-height:1.15;">
+                    Layanan Terjemahan
+                    <span class="d-block" style="color:#FFD166;">Profesional &amp; Tersumpah</span>
+                </h1>
+                <p class="lead mb-4 opacity-90" style="max-width: 560px;">
+                    Terjemahan akurat Indonesia ⇄ Mandarin ⇄ Inggris untuk bisnis, legal, dan personal
+                </p>
+                <p class="mb-4 text-white-50" style="max-width:560px; font-size:.95rem;">
+                    Kami menjembatani bahasa dan budaya — dokumen, video, hingga pertemuan bisnis Anda ditangani penerjemah native &amp; tersumpah, dengan jaminan akurasi, kerahasiaan, dan tepat waktu.
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="http://localhost:8000/id/contact" class="btn btn-warning btn-lg px-4 fw-bold shadow">
+                        <i class="fa-brands fa-whatsapp me-1"></i> Konsultasi Gratis
+                    </a>
+                    <a href="#layanan" class="btn btn-outline-light btn-lg px-4">
+                        Lihat Layanan <i class="fa-solid fa-arrow-down ms-1"></i>
+                    </a>
+                </div>
+                <div class="d-flex gap-4 mt-4 flex-wrap text-white-50 small">
+                    <span><i class="fa-solid fa-check-circle text-warning me-1"></i> Penerjemah Tersumpah</span>
+                    <span><i class="fa-solid fa-check-circle text-warning me-1"></i> Kerahasiaan 100%</span>
+                    <span><i class="fa-solid fa-check-circle text-warning me-1"></i> Revisi Gratis</span>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <div class="bg-white rounded-4 p-4 shadow-lg text-dark position-relative" style="transform: rotate(-1deg);">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+                            <i class="fa-solid fa-language text-primary fa-lg"></i>
+                        </div>
+                        <div>
+                            <div class="fw-bold">ID ⇄ CN ⇄ EN</div>
+                            <div class="small text-muted">Indonesia • Mandarin • Inggris</div>
+                        </div>
+                        <span class="badge bg-success ms-auto">Tersumpah</span>
+                    </div>
+                    <div class="bg-light rounded-3 p-3 mb-3">
+                        <div class="small text-muted mb-1">Contoh hasil</div>
+                        <div class="fw-semibold small">合同翻译 / Contract Translation</div>
+                        <div class="progress mt-2" style="height:6px;">
+                            <div class="progress-bar bg-success" style="width: 92%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between small text-muted mt-1">
+                            <span>Akurasi 99.2%</span><span>2.400+ proyek</span>
+                        </div>
+                    </div>
+                    <div class="row g-2 text-center small">
+                        <div class="col-4">
+                            <div class="bg-primary bg-opacity-10 rounded-3 py-2">
+                                <div class="fw-bold text-primary">24J</div>
+                                <div class="text-muted" style="font-size:.7rem;">Express</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="bg-warning bg-opacity-15 rounded-3 py-2">
+                                <div class="fw-bold" style="color:#7a5200;">100%</div>
+                                <div class="text-muted" style="font-size:.7rem;">Rahasia</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="bg-success bg-opacity-10 rounded-3 py-2">
+                                <div class="fw-bold text-success">Gratis</div>
+                                <div class="text-muted" style="font-size:.7rem;">Revisi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-4 bg-white border-bottom">
+    <div class="container">
+        <div class="row text-center g-3">
+            <div class="col-6 col-md-3">
+                <div class="fw-bold h4 mb-0 text-primary">20.000+</div>
+                <div class="small text-muted">Dokumen Diterjemahkan</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="fw-bold h4 mb-0 text-primary">1.200+</div>
+                <div class="small text-muted">Klien Perusahaan</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="fw-bold h4 mb-0 text-primary">50+</div>
+                <div class="small text-muted">Bidang Industri</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="fw-bold h4 mb-0 text-primary">98%</div>
+                <div class="small text-muted">Kepuasan Klien</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="layanan" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 mb-3 fw-semibold">4 Layanan Utama</span>
+            <h2 class="fw-bold mb-2">Solusi Alih Bahasa Lengkap</h2>
+            <p class="text-muted mx-auto" style="max-width:640px;">Pilih layanan sesuai kebutuhan — dari dokumen harian hingga legalitas resmi, video, dan pendampingan langsung.</p>
+        </div>
+
+        <div class="row g-4">
+            
+            <div class="col-md-6 col-xl-3">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden service-card">
+                    <div class="card-header bg-white border-0 pt-4 px-4 pb-0">
+                        <div class="icon-wrap bg-primary bg-opacity-10 text-primary">
+                            <i class="fa-solid fa-file-lines fa-lg"></i>
+                        </div>
+                        <span class="badge bg-primary bg-opacity-10 text-primary mt-3">Paling Populer</span>
+                        <h3 class="h5 fw-bold mt-2 mb-1">Terjemahan Dokumen</h3>
+                        <p class="small text-muted mb-0">Terjemahan umum yang rapi &amp; akurat untuk kebutuhan bisnis dan personal.</p>
+                    </div>
+                    <div class="card-body px-4 pt-3">
+                        <ul class="list-unstyled small mb-3">
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Brosur, laporan &amp; presentasi</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Kontrak non-legal &amp; MOU</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Artikel, manual &amp; materi marketing</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Formatting asli tetap rapi</li>
+                        </ul>
+                        <div class="bg-light rounded-3 p-2 small text-muted">
+                            <i class="fa-solid fa-tags me-1 text-primary"></i> ID ⇄ CN ⇄ EN • PDF, Word, Excel, PPT
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0 px-4 pb-4 pt-0">
+                        <a href="http://localhost:8000/id/contact" class="btn btn-primary w-100 fw-semibold">
+                            Minta Penawaran <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </a>
+                        <div class="text-center small text-muted mt-2"><i class="fa-regular fa-clock me-1"></i> Mulai 12 jam • Express tersedia</div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-6 col-xl-3">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden service-card featured">
+                    <div class="position-absolute top-0 end-0 m-3">
+                        <span class="badge bg-warning text-dark shadow-sm"><i class="fa-solid fa-star me-1"></i> Rekomendasi</span>
+                    </div>
+                    <div class="card-header bg-white border-0 pt-4 px-4 pb-0">
+                        <div class="icon-wrap bg-warning bg-opacity-20" style="color:#7a5200;">
+                            <i class="fa-solid fa-certificate fa-lg"></i>
+                        </div>
+                        <span class="badge bg-warning bg-opacity-20 mt-3" style="color:#7a5200;">Resmi &amp; Legal</span>
+                        <h3 class="h5 fw-bold mt-2 mb-1">Terjemahan Tersumpah</h3>
+                        <p class="small text-muted mb-0">Dikerjakan penerjemah tersumpah untuk keperluan resmi &amp; legal.</p>
+                    </div>
+                    <div class="card-body px-4 pt-3">
+                        <ul class="list-unstyled small mb-3">
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Ijazah, transkrip &amp; akta</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>SKCK, KK, KTP untuk visa</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Kontrak legal &amp; akta notaris</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Stempel &amp; tanda tangan tersumpah</li>
+                        </ul>
+                        <div class="bg-warning bg-opacity-10 rounded-3 p-2 small" style="color:#5a3e00;">
+                            <i class="fa-solid fa-shield-halved me-1"></i> Sah untuk Kedutaan, Kemenkumham, Imigrasi
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0 px-4 pb-4 pt-0">
+                        <a href="http://localhost:8000/id/contact" class="btn btn-warning w-100 fw-bold text-dark">
+                            Minta Penawaran <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </a>
+                        <div class="text-center small text-muted mt-2"><i class="fa-solid fa-stamp me-1"></i> 1–3 hari kerja • Legalisasi tersedia</div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-6 col-xl-3">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden service-card">
+                    <div class="card-header bg-white border-0 pt-4 px-4 pb-0">
+                        <div class="icon-wrap" style="background:#ffe8e8; color:#b03a3a;">
+                            <i class="fa-solid fa-closed-captioning fa-lg"></i>
+                        </div>
+                        <span class="badge mt-3" style="background:#ffe8e8; color:#b03a3a;">Subtitle &amp; Dubbing</span>
+                        <h3 class="h5 fw-bold mt-2 mb-1">Video Translation</h3>
+                        <p class="small text-muted mb-0">Buat videomu dipahami audiens global dengan subtitle &amp; transkrip akurat.</p>
+                    </div>
+                    <div class="card-body px-4 pt-3">
+                        <ul class="list-unstyled small mb-3">
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Subtitle &amp; closed caption</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Transkrip &amp; terjemahan naskah</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Dubbing &amp; voice-over</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Sinkronisasi waktu presisi</li>
+                        </ul>
+                        <div class="bg-light rounded-3 p-2 small text-muted">
+                            <i class="fa-solid fa-film me-1" style="color:#b03a3a;"></i> YouTube, TikTok, E-learning, Company Profile
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0 px-4 pb-4 pt-0">
+                        <a href="http://localhost:8000/id/contact" class="btn btn-dark w-100 fw-semibold">
+                            Minta Penawaran <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </a>
+                        <div class="text-center small text-muted mt-2"><i class="fa-solid fa-clapperboard me-1"></i> Mulai 24 jam • SRT, VTT, burn-in</div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-6 col-xl-3">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden service-card">
+                    <div class="card-header bg-white border-0 pt-4 px-4 pb-0">
+                        <div class="icon-wrap bg-success bg-opacity-10 text-success">
+                            <i class="fa-solid fa-comments fa-lg"></i>
+                        </div>
+                        <span class="badge bg-success bg-opacity-10 text-success mt-3">On-site &amp; Online</span>
+                        <h3 class="h5 fw-bold mt-2 mb-1">Layanan Interpreter</h3>
+                        <p class="small text-muted mb-0">Pendamping bahasa profesional untuk meeting &amp; acara penting.</p>
+                    </div>
+                    <div class="card-body px-4 pt-3">
+                        <ul class="list-unstyled small mb-3">
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Meeting &amp; negosiasi bisnis</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Seminar, pameran &amp; training</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Pendampingan WNA di lapangan</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Konsekutif &amp; simultan</li>
+                        </ul>
+                        <div class="bg-success bg-opacity-10 rounded-3 p-2 small text-success">
+                            <i class="fa-solid fa-headset me-1"></i> Offline Jakarta/SBY/SMG • Online Zoom/Meet
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0 px-4 pb-4 pt-0">
+                        <a href="http://localhost:8000/id/contact" class="btn btn-success w-100 fw-semibold">
+                            Minta Penawaran <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </a>
+                        <div class="text-center small text-muted mt-2"><i class="fa-solid fa-calendar-check me-1"></i> Per jam / per hari • Booking fleksibel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+                <span class="badge bg-dark text-white px-3 py-2 mb-3">Alur Kerja</span>
+                <h2 class="fw-bold mb-3">Mudah, Cepat, Transparan</h2>
+                <p class="text-muted mb-4">Cukup kirim dokumen atau jelaskan kebutuhanmu — kami urus sisanya hingga hasil siap pakai.</p>
+                <a href="http://localhost:8000/id/contact" class="btn btn-primary px-4">
+                    Mulai Sekarang <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+            <div class="col-lg-7">
+                <div class="row g-3">
+                                                                <div class="col-6">
+                            <div class="border rounded-4 p-4 h-100 position-relative bg-light">
+                                <div class="position-absolute top-0 end-0 mt-3 me-3 fw-bold opacity-10" style="font-size:2.2rem; color:#1a2a4f;">01</div>
+                                <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width:44px;height:44px; background: #1a2a4f15; color: #1a2a4f;">
+                                    <i class="fa-solid fa-comments"></i>
+                                </div>
+                                <h6 class="fw-bold mb-1">Konsultasi</h6>
+                                <p class="small text-muted mb-0">Kirim file via WA/Email, kami cek &amp; beri saran gratis.</p>
+                            </div>
+                        </div>
+                                            <div class="col-6">
+                            <div class="border rounded-4 p-4 h-100 position-relative bg-light">
+                                <div class="position-absolute top-0 end-0 mt-3 me-3 fw-bold opacity-10" style="font-size:2.2rem; color:#2d4a7a;">02</div>
+                                <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width:44px;height:44px; background: #2d4a7a15; color: #2d4a7a;">
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                                </div>
+                                <h6 class="fw-bold mb-1">Penawaran</h6>
+                                <p class="small text-muted mb-0">Harga &amp; timeline transparan, tanpa biaya tersembunyi.</p>
+                            </div>
+                        </div>
+                                            <div class="col-6">
+                            <div class="border rounded-4 p-4 h-100 position-relative bg-light">
+                                <div class="position-absolute top-0 end-0 mt-3 me-3 fw-bold opacity-10" style="font-size:2.2rem; color:#b03a3a;">03</div>
+                                <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width:44px;height:44px; background: #b03a3a15; color: #b03a3a;">
+                                    <i class="fa-solid fa-pen-ruler"></i>
+                                </div>
+                                <h6 class="fw-bold mb-1">Pengerjaan &amp; QC</h6>
+                                <p class="small text-muted mb-0">Diterjemahkan native + proofreading berlapis.</p>
+                            </div>
+                        </div>
+                                            <div class="col-6">
+                            <div class="border rounded-4 p-4 h-100 position-relative bg-light">
+                                <div class="position-absolute top-0 end-0 mt-3 me-3 fw-bold opacity-10" style="font-size:2.2rem; color:#2d6a4f;">04</div>
+                                <div class="rounded-circle d-flex align-items-center justify-content-center mb-3" style="width:44px;height:44px; background: #2d6a4f15; color: #2d6a4f;">
+                                    <i class="fa-solid fa-box-open"></i>
+                                </div>
+                                <h6 class="fw-bold mb-1">Delivery &amp; Revisi</h6>
+                                <p class="small text-muted mb-0">File jadi dikirim, revisi gratis hingga puas.</p>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h3 class="fw-bold">Mengapa IF Language School?</h3>
+            <p class="text-muted">Dipercaya hampir 20.000 peserta sejak 2019 dan bermitra dengan Badan Bahasa Kemendikbudristek.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 col-6 text-center">
+                <div class="bg-white rounded-4 p-4 shadow-sm h-100">
+                    <i class="fa-solid fa-user-graduate text-primary fa-2x mb-3"></i>
+                    <h6 class="fw-bold mb-1">Native &amp; Tersumpah</h6>
+                    <p class="small text-muted mb-0">Penerjemah native CN/EN/ID &amp; tersumpah resmi.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 text-center">
+                <div class="bg-white rounded-4 p-4 shadow-sm h-100">
+                    <i class="fa-solid fa-lock text-success fa-2x mb-3"></i>
+                    <h6 class="fw-bold mb-1">Rahasia Terjamin</h6>
+                    <p class="small text-muted mb-0">NDA &amp; enkripsi file, dokumen aman.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 text-center">
+                <div class="bg-white rounded-4 p-4 shadow-sm h-100">
+                    <i class="fa-solid fa-stopwatch text-warning fa-2x mb-3"></i>
+                    <h6 class="fw-bold mb-1">Tepat Waktu</h6>
+                    <p class="small text-muted mb-0">Deadline jelas, ada opsi express 12–24 jam.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 text-center">
+                <div class="bg-white rounded-4 p-4 shadow-sm h-100">
+                    <i class="fa-solid fa-rotate text-danger fa-2x mb-3"></i>
+                    <h6 class="fw-bold mb-1">Revisi Gratis</h6>
+                    <p class="small text-muted mb-0">Gratis revisi hingga hasil sesuai harapan.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="rounded-4 p-4 p-md-5" style="background: linear-gradient(135deg, #0f1e3a 0%, #1a2a4f 60%, #2d4a7a 100%);">
+            <div class="row align-items-center g-4 text-white">
+                <div class="col-lg-7">
+                    <h3 class="fw-bold mb-3">Pasangan Bahasa Unggulan</h3>
+                    <p class="opacity-75 mb-4">Fokus utama Indonesia–Mandarin–Inggris, dengan dukungan pasangan bahasa lain sesuai kebutuhan.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-white text-dark px-3 py-2">🇮🇩 Indonesia → 中文</span>
+                        <span class="badge bg-white text-dark px-3 py-2">中文 → 🇮🇩 Indonesia</span>
+                        <span class="badge bg-white text-dark px-3 py-2">🇬🇧 English ⇄ 🇮🇩</span>
+                        <span class="badge bg-white text-dark px-3 py-2">中文 ⇄ 🇬🇧 English</span>
+                        <span class="badge bg-warning text-dark px-3 py-2">+ bahasa lain</span>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="bg-white rounded-4 p-4 text-dark">
+                        <h6 class="fw-bold mb-3"><i class="fa-solid fa-folder-open text-primary me-2"></i>Dokumen yang Kami Tangani</h6>
+                        <div class="row g-2 small">
+                            <div class="col-6"><i class="fa-solid fa-file text-primary me-1"></i> Ijazah &amp; Transkrip</div>
+                            <div class="col-6"><i class="fa-solid fa-file text-primary me-1"></i> Akta &amp; KK</div>
+                            <div class="col-6"><i class="fa-solid fa-file text-primary me-1"></i> Kontrak Bisnis</div>
+                            <div class="col-6"><i class="fa-solid fa-file text-primary me-1"></i> Laporan Keuangan</div>
+                            <div class="col-6"><i class="fa-solid fa-file text-primary me-1"></i> Brosur &amp; Katalog</div>
+                            <div class="col-6"><i class="fa-solid fa-file text-primary me-1"></i> Sertifikat &amp; Legal</div>
+                            <div class="col-6"><i class="fa-solid fa-file-video text-danger me-1"></i> Video & Subtitle</div>
+                            <div class="col-6"><i class="fa-solid fa-file-audio text-success me-1"></i> Audio & Transkrip</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="py-5 text-white text-center" style="background: linear-gradient(135deg, #b03a3a 0%, #7a1f1f 100%);">
+    <div class="container py-2">
+        <h2 class="fw-bold mb-3">Siap Terjemahkan Dokumenmu Hari Ini?</h2>
+        <p class="lead opacity-90 mb-4 mx-auto" style="max-width:640px;">Konsultasi gratis — kirim filemu sekarang, kami balas penawaran dalam 15 menit di jam kerja.</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="http://localhost:8000/id/contact" class="btn btn-light btn-lg px-4 fw-bold text-dark">
+                <i class="fa-brands fa-whatsapp me-1 text-success"></i> Chat WhatsApp
+            </a>
+            <a href="http://localhost:8000/id/contact" class="btn btn-outline-light btn-lg px-4">
+                Kirim Email <i class="fa-solid fa-envelope ms-1"></i>
+            </a>
+        </div>
+        <div class="small opacity-75 mt-3">Respon cepat Senin–Sabtu 09.00–21.00 WIB • Kerahasiaan terjamin</div>
+    </div>
+</section>
+
+<style>
+    .service-card { transition: transform .22s ease, box-shadow .22s ease; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 1rem 2rem rgba(0,0,0,.13) !important; }
+    .service-card.featured { border: 2px solid #FFD166 !important; }
+    .icon-wrap { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; }
+    .hero-translation { position:relative; overflow:hidden; }
+    .hero-translation::after { content:""; position:absolute; right:-80px; top:-80px; width:360px; height:360px; background: radial-gradient(circle, rgba(255,255,255,.12) 0%, transparent 70%); border-radius:50%; }
+</style>
+
+    </main>
+
+    <!-- ======= FOOTER ======= -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 IF Language School. Bahasa</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

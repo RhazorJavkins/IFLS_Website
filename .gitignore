@@ -1,0 +1,50 @@
+# ===== Laravel standar =====
+/vendor
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/.phpunit.cache
+/.phpunit.result.cache
+.phpactor.json
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+
+# ===== Environment & kredensial (JANGAN pernah commit) =====
+.env
+.env.backup
+.env.production
+/admin-credentials.txt
+
+# ===== Database (berisi data pribadi leads; regenerasi: migrate --seed) =====
+/database/*.sqlite
+/database/*.sqlite-journal
+/database/*.sqlite-wal
+/database/*.sqlite-shm
+
+# ===== Runtime storage =====
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*
+/storage/app/backups/*
+/storage/app/private/*
+!/storage/**/.gitignore
+
+# ===== OS & workspace =====
+.DS_Store
+Thumbs.db
+/.freebuff
+/.hermes
+
+# ===== Static export usang (lihat REVIEW.md - Fase 6) =====
+/vercel-preview
+
+# Compiled cache facade
+/storage/framework/cache/*.php
