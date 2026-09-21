@@ -1,58 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🌏 IF Language School — Website & CMS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-13-FF2D20?logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.3-777BB4?logo=php&logoColor=white)](https://www.php.net)
+[![Filament](https://img.shields.io/badge/Filament-4-CMS-f59e0b)](https://filamentphp.com)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.3-7952B3?logo=bootstrap&logoColor=white)](https://getbootstrap.com)
+[![Tests](https://img.shields.io/badge/tests-23%20passing-brightgreen)](#perintah-sehari-hari)
+[![Languages](https://img.shields.io/badge/bahasa-ID%20%7C%20EN%20%7C%20ZH-blue)](#)
 
-## About Laravel
+Website resmi + sistem manajemen konten **IF Language School** — lembaga bahasa Indonesia ⇄ China (didirikan 2012 sebagai IF Language Center, rebrand 2026). Mitra **Badan Bahasa Kemendikbudristek**. 3 kota: Jakarta · Semarang · Surabaya.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> Satu aplikasi: **Blade** untuk halaman publik + **Filament** untuk panel admin — berbagi model, database, dan lang files. Tidak ada duplikasi codebase.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fitur
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Area | Detail |
+|---|---|
+| 🌐 Halaman publik | Beranda, Tentang, Kursus, Terjemahan, Blog (+ detail), Galeri, Kontak, 404 — full i18n **id / en / zh** |
+| 🎛️ CMS (`/admin`) | Leads kontak, Testimoni, FAQ, Artikel Blog, Mitra, Galeri, Program, Kelas + Jadwal, Paket Harga |
+| 📨 Lead management | Form kontak → tersimpan ke DB; tombol WhatsApp langsung per lead; tandai sudah dihubungi |
+| 🛡️ Security | Security headers + CSP Report-Only, rate limit + honeypot + time-trap, upload `SafeImage` (MIME asli), IP allowlist admin opsional, backup harian |
+| 🔍 SEO | Meta description 3 bahasa, Open Graph + Twitter Card, canonical + hreflang, JSON-LD LocalBusiness, `sitemap.xml`, `robots.txt` |
+| 📊 Analytics | GA4 via `.env` + event `whatsapp_click` / `wechat_open` |
+| 🧪 Kualitas | Feature test: 23 test / 73 assertions — pola **DB-first dengan fallback** menjamin halaman tidak pernah mati |
 
-## Learning Laravel
+## 🏗️ Struktur
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```
+app/
+├── Filament/Resources/        # CMS: ContactLead, Testimonial, Faq, Post,
+│   │                          #      Partner, GalleryItem, Program, Course, PricingPlan
+│   └── Widgets/               # Widget statistik lead dashboard
+├── Http/Controllers/          # Home, Course, Contact, Page, Sitemap
+├── Http/Middleware/           # Localization, SecurityHeaders, AdminIpAllowlist
+├── Models/                    # 13 model (kolom i18n = JSON {id,en,zh})
+├── Rules/SafeImage.php        # Validasi upload aman
+└── Console/Commands/          # db:backup (SQLite, retensi 7 hari)
+database/
+├── migrations/                # 11 tabel (users, courses, programs, posts, ...)
+└── seeders/                   # ContentSeeder + CourseContentSeeder (baca lang files)
+resources/views/               # Blade: layouts, home, courses, blog, contact, sitemap
+lang/{id,en,zh}/messages.php   # Fallback konten + UI strings
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+**Pola konten:** halaman publik membaca **database** (dikelola via `/admin`); jika tabel kosong → otomatis fallback ke `lang/` files. Situs tetap tampil utuh bahkan sebelum di-seed.
 
-## Contributing
+## ⚡ Setup (PC baru)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Prasyarat: PHP 8.3 (+ext zip, sqlite, gd, intl), Composer. Rekomendasi Windows: [Laragon](https://laragon.org).
 
-## Code of Conduct
+```bash
+git clone https://github.com/RhazorJavkins/IFLS_Website.git
+cd IFLS_Website
+composer install
+cp .env.example .env          # Windows: copy
+php artisan key:generate
+php artisan migrate --force --seed
+php artisan serve --host=127.0.0.1 --port=8080
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Situs: `http://127.0.0.1:8080/id`
+- Admin: `http://127.0.0.1:8080/admin` — buat akun:
+  ```bash
+  php artisan tinker --execute="App\Models\User::updateOrCreate(['email'=>'admin@iflanguage.com'],['name'=>'Admin IFLS','password'=>'PASSWORD-KUAT-MIN-12']);"
+  ```
+- Produksi (VPS): ganti `.env` → `APP_ENV=production`, `APP_DEBUG=false`, `DB_CONNECTION=mysql`, `SESSION_SECURE_COOKIE=true`
 
-## Security Vulnerabilities
+## 🔧 Perintah sehari-hari
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan serve --host=127.0.0.1 --port=8080  # dev server
+php artisan test                                 # 23 tests
+php artisan db:seed --force                      # re-seed konten (idempotent)
+php artisan db:backup                            # backup DB (terjadwal 23:00, retensi 7)
+```
 
-## License
+## 🔐 Catatan security
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Jangan pernah commit `.env`, database berisi leads, atau kredensial (sudah di-`.gitignore`)
+- Setelah log CSP Report-Only bersih 1–2 hari → set `SECURITY_CSP_ENFORCE=true`
+- Upload gambar selalu lewat rule `SafeImage` (MIME asli, ≤3 MB, tolak PHP menyamar)
+
+## 📚 Dokumentasi lanjutan
+
+- [`REVIEW.md`](REVIEW.md) — status fase 1–5, skor, roadmap Fase 6 (VPS + domain)
+- [`HANDOVER/README.md`](HANDOVER/README.md) — arsitektur konten, setup PC lain, security yang wajib dipertahankan
+
+---
+
+© 2026 IF Language School · Dibangun dengan Laravel 13 + Filament 4 · 🤖 Dibantu Codebuff
