@@ -126,7 +126,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top navbar-premium shadow-sm" id="mainNav">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ url('/' . app()->getLocale()) }}">
-                <img src="{{ asset('logo.png') }}" alt="IF Language School" height="48" style="display:inline-block;">
+                @include('layouts._logo-long')
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -214,7 +214,7 @@
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="d-flex align-items-center mb-3">
-                        <img src="{{ asset('logo-square.png') }}" alt="IF" height="56" style="display:inline-block;">
+                        @include('layouts._logo-square')
                     </div>
                     <p class="small text-white-50 mb-2">{{ __('messages.welcome_subtitle') }}</p>
                     <p class="small text-white-50 mb-0"><i class="fa-solid fa-location-dot text-warning me-1"></i> Jakarta • Semarang • Surabaya</p>
