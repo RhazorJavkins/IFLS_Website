@@ -291,8 +291,10 @@
     </script>
     @endif
     <style>.uni-slider::-webkit-scrollbar{display:none;} .uni-slider{scroll-behavior:smooth;}
-    /* Skeleton loading untuk gambar */
-    img { background: #e9ecef; }
+    /* Skeleton loading untuk gambar — OPT-IN saja.
+       JANGAN pakai rule global img { background: ... }: area transparan PNG
+       (mis. logo putih) akan menampilkan warna background elemen, sehingga
+       glyph putih hilang di navbar gelap. */
     img.loading-skeleton { background: linear-gradient(90deg, #e9ecef 25%, #f8f9fa 37%, #e9ecef 63%); background-size: 400% 100%; animation: skeletonShimmer 1.2s ease-in-out infinite; }
     @keyframes skeletonShimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
     /* beri ruang bawah agar sticky CTA mobile tidak nutup konten */
