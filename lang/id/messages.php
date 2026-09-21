@@ -379,7 +379,7 @@ return [
     'about_team_badge' => 'Tim Inti',
     'about_team_title' => 'Tim Kami',
     'about_team_desc' => 'Tim manajemen yang berdedikasi untuk mutu pengajaran dan pelayanan terbaik.',
-    'about_team_note' => 'Data tim saat ini statis — selanjutnya dapat dikelola via database (panel admin).',
+    'about_team_note' => 'Data tim dikelola melalui panel admin (CMS) — pembaruan langsung tampil di situs.',
     'about_team_add_more' => 'Dan akan terus bertambah',
 
     
@@ -428,5 +428,23 @@ return [
         ['q' => 'Apakah ada program untuk perusahaan?', 'a' => 'Ya, kami menyediakan program corporate training yang bisa disesuaikan dengan kebutuhan perusahaan — mulai dari bahasa Indonesia untuk ekspatriat, bahasa Mandarin untuk bisnis, hingga bahasa Inggris untuk presentasi internasional. Hubungi kami untuk penawaran khusus.'],
         ['q' => 'Berapa biaya kursus?', 'a' => 'Biaya bervariasi tergantung program, durasi, dan format (online/offline, privat/kelompok). Hubungi kami untuk konsultasi gratis dan penawaran harga terbaik sesuai kebutuhan Anda.'],
     ],
+
+    // Card hero beranda & services (deck visual)
+    'hero_card_tagline' => 'Kursus • Terjemahan • Interpreter',
+    'hero_card_sample' => 'Kelas Bahasa Indonesia WNA',
+    'hero_card_satisfied' => '92% puas',
+    'hero_card_students' => '10.000+ siswa',
+    'hero_card_cities' => 'Kota',
+    'hero_card_express' => 'Express',
+    'hero_card_sworn' => 'Tersumpah',
+    'hero_card_official' => 'Resmi',
+    'hero_card_wachat' => 'WeChat & WhatsApp',
+    'hero_card_reply' => 'Balas < 15 menit',
+    'svc_card_languages' => 'Indonesia • Mandarin • Inggris',
+    'svc_card_sample' => 'Contoh hasil',
+    'svc_card_accuracy' => 'Akurasi 99.2%',
+    'svc_card_projects' => '2.400+ proyek',
+    'svc_card_confidential' => 'Rahasia',
+    'svc_card_revision' => 'Revisi',
 
 ];

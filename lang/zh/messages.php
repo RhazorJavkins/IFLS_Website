@@ -378,7 +378,7 @@ return [
     'about_team_badge' => '核心团队',
     'about_team_title' => '我们的团队',
     'about_team_desc' => '致力于教学质量与优质服务的核心管理团队。',
-    'about_team_note' => '团队数据目前为静态——后续可通过数据库（管理后台）进行管理。',
+    'about_team_note' => '团队数据通过后台管理面板（CMS）管理——更新即时显示在网站上。',
     'about_team_add_more' => '团队持续壮大中',
 
     
@@ -427,5 +427,23 @@ return [
         ['q' => '有企业培训项目吗？', 'a' => '有的，我们提供根据企业需求定制的企业培训项目——从外派员工的印尼语、商务中文到国际演示英文。联系我们获取特别报价。'],
         ['q' => '课程费用是多少？', 'a' => '费用根据课程、时长和形式（线上/线下，私教/小班）而有所不同。联系我们进行免费咨询，获取最适合您需求的优惠价格。'],
     ],
+
+    // 首页主视觉卡片 & 服务页卡片
+    'hero_card_tagline' => '课程 • 翻译 • 口译',
+    'hero_card_sample' => '外国人印尼语班',
+    'hero_card_satisfied' => '92%满意',
+    'hero_card_students' => '10,000+学员',
+    'hero_card_cities' => '城市',
+    'hero_card_express' => '加急',
+    'hero_card_sworn' => '宣誓翻译',
+    'hero_card_official' => '官方',
+    'hero_card_wachat' => '微信 & WhatsApp',
+    'hero_card_reply' => '15分钟内回复',
+    'svc_card_languages' => '印尼语 • 中文 • 英文',
+    'svc_card_sample' => '翻译示例',
+    'svc_card_accuracy' => '准确率99.2%',
+    'svc_card_projects' => '2,400+项目',
+    'svc_card_confidential' => '保密',
+    'svc_card_revision' => '免费修改',
 
 ];

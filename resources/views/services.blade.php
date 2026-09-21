@@ -44,37 +44,37 @@
                         </div>
                         <div>
                             <div class="fw-bold">ID ⇄ CN ⇄ EN</div>
-                            <div class="small text-muted">Indonesia • Mandarin • Inggris</div>
+                            <div class="small text-muted">{{ __('messages.svc_card_languages') }}</div>
                         </div>
-                        <span class="badge bg-success ms-auto">Tersumpah</span>
+                        <span class="badge bg-success ms-auto">{{ __('messages.hero_card_sworn') }}</span>
                     </div>
                     <div class="bg-light rounded-3 p-3 mb-3">
-                        <div class="small text-muted mb-1">Contoh hasil</div>
+                        <div class="small text-muted mb-1">{{ __('messages.svc_card_sample') }}</div>
                         <div class="fw-semibold small">合同翻译 / Contract Translation</div>
                         <div class="progress mt-2" style="height:6px;">
                             <div class="progress-bar bg-success" style="width: 92%"></div>
                         </div>
                         <div class="d-flex justify-content-between small text-muted mt-1">
-                            <span>Akurasi 99.2%</span><span>2.400+ proyek</span>
+                            <span>{{ __('messages.svc_card_accuracy') }}</span><span>{{ __('messages.svc_card_projects') }}</span>
                         </div>
                     </div>
                     <div class="row g-2 text-center small">
                         <div class="col-4">
                             <div class="bg-primary bg-opacity-10 rounded-3 py-2">
                                 <div class="fw-bold text-primary">24J</div>
-                                <div class="text-muted" style="font-size:.7rem;">Express</div>
+                                <div class="text-muted" style="font-size:.7rem;">{{ __('messages.hero_card_express') }}</div>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="bg-warning bg-opacity-15 rounded-3 py-2">
                                 <div class="fw-bold" style="color:#7a5200;">100%</div>
-                                <div class="text-muted" style="font-size:.7rem;">Rahasia</div>
+                                <div class="text-muted" style="font-size:.7rem;">{{ __('messages.svc_card_confidential') }}</div>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="bg-success bg-opacity-10 rounded-3 py-2">
                                 <div class="fw-bold text-success">Gratis</div>
-                                <div class="text-muted" style="font-size:.7rem;">Revisi</div>
+                                <div class="text-muted" style="font-size:.7rem;">{{ __('messages.svc_card_revision') }}</div>
                             </div>
                         </div>
                     </div>

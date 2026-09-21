@@ -46,33 +46,33 @@
                             </div>
                             <div>
                                 <div class="fw-bold" style="letter-spacing:.5px;">ID ⇄ 中文 ⇄ EN</div>
-                                <div class="small text-muted">Kursus • Terjemahan • Interpreter</div>
+                                <div class="small text-muted">{{ __('messages.hero_card_tagline') }}</div>
                             </div>
                             <span class="badge bg-success ms-auto">Live</span>
                         </div>
                         <div class="bg-light rounded-3 p-3 mb-3">
                             <div class="d-flex justify-content-between small mb-1">
-                                <span class="text-muted">Kelas Bahasa Indonesia WNA</span><span class="fw-bold text-success">92% puas</span>
+                                <span class="text-muted">{{ __('messages.hero_card_sample') }}</span><span class="fw-bold text-success">{{ __('messages.hero_card_satisfied') }}</span>
                             </div>
                             <div class="progress" style="height:7px;"><div class="progress-bar bg-success" style="width:92%"></div></div>
                             <div class="d-flex justify-content-between small text-muted mt-1">
-                                <span><i class="fa-solid fa-users me-1"></i> 10.000+ siswa</span><span><i class="fa-solid fa-star text-warning me-1"></i> 4.9/5</span>
+                                <span><i class="fa-solid fa-users me-1"></i> {{ __('messages.hero_card_students') }}</span><span><i class="fa-solid fa-star text-warning me-1"></i> 4.9/5</span>
                             </div>
                         </div>
                         <div class="row g-2 text-center small">
                             <div class="col-4">
                                 <div class="bg-primary bg-opacity-10 rounded-3 py-2">
-                                    <div class="fw-bold text-primary">3</div><div class="text-muted" style="font-size:.65rem;">Kota</div>
+                                    <div class="fw-bold text-primary">3</div><div class="text-muted" style="font-size:.65rem;">{{ __('messages.hero_card_cities') }}</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="bg-warning bg-opacity-15 rounded-3 py-2">
-                                    <div class="fw-bold" style="color:#7a5200;">24J</div><div class="text-muted" style="font-size:.65rem;">Express</div>
+                                    <div class="fw-bold" style="color:#7a5200;">24J</div><div class="text-muted" style="font-size:.65rem;">{{ __('messages.hero_card_express') }}</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="bg-success bg-opacity-10 rounded-3 py-2">
-                                    <div class="fw-bold text-success">Tersumpah</div><div class="text-muted" style="font-size:.65rem;">Resmi</div>
+                                    <div class="fw-bold text-success">{{ __('messages.hero_card_sworn') }}</div><div class="text-muted" style="font-size:.65rem;">{{ __('messages.hero_card_official') }}</div>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="position-absolute bg-white text-dark rounded-3 px-3 py-2 shadow d-flex align-items-center gap-2" style="bottom:-18px; left:-14px; font-size:.78rem;">
                         <span class="rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;background:#07C160;"><i class="fa-brands fa-weixin text-white"></i></span>
-                        <div class="text-start"><div class="fw-bold" style="font-size:.78rem;">WeChat & WhatsApp</div><div class="small text-muted" style="font-size:.68rem;">Balas &lt; 15 menit</div></div>
+                        <div class="text-start"><div class="fw-bold" style="font-size:.78rem;">{{ __('messages.hero_card_wachat') }}</div><div class="small text-muted" style="font-size:.68rem;">{{ __('messages.hero_card_reply') }}</div></div>
                     </div>
                 </div>
             </div>
@@ -297,27 +297,30 @@
         </div>
 
         <div class="row g-4 justify-content-center">
-            {{-- Direksi highlight — data dari config/team.php (sinkron dengan halaman About) --}}
-            @foreach(config('team.directors') as $d)
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 team-home-card">
-                    <div class="mx-auto mb-3 rounded-circle overflow-hidden border border-2 border-light shadow-sm" style="width:64px;height:64px;">
-                        <img src="{{ asset('images/team/'.$d['photo']) }}" alt="{{ $d['py'] }}" class="w-100 h-100" style="object-fit:cover;" loading="lazy" decoding="async">
-                    </div>
-                    <h6 class="fw-bold mb-0 small">{{ $d['cn'] }} <span class="fw-normal text-muted">{{ $d['py'] }}</span></h6>
-                    <div class="small text-muted" style="font-size:.72rem;">@if(app()->getLocale()==='zh'){{ $d['role_cn'] }}@elseif(app()->getLocale()==='en'){{ $d['role_en'] }}@else{{ $d['role_id'] }}@endif</div>
-                </div>
-            </div>
-            @endforeach
-            @php $homeTeam = array_slice(config('team.team'), 0, config('team.home_limit', 4)); $locale=app()->getLocale(); @endphp
-            @foreach($homeTeam as $m)
-                <div class="col-6 col-md-4 col-lg-2">
+            @php
+                $locale = app()->getLocale();
+                $homeDirectors = \App\Models\TeamMember::query()->active()->where('is_director', true)->orderBy('sort')->get();
+                $homeTeam = \App\Models\TeamMember::query()->active()->where('is_director', false)->orderBy('sort')->limit(6)->get();
+                $homeCards = $homeDirectors->concat($homeTeam);
+                if ($homeCards->isEmpty()) {
+                    // Fallback config — situs tetap tampil walau DB kosong
+                    $toCard = fn (array $d): object => (object) [
+                        'name_cn' => $d['cn'], 'name' => $d['py'],
+                        'photo_url' => asset('images/team/'.$d['photo']),
+                        'translated_role' => $locale === 'zh' ? $d['role_cn'] : ($locale === 'en' ? $d['role_en'] : $d['role_id']),
+                    ];
+                    $homeCards = collect(config('team.directors', []))->map(fn ($d) => $toCard($d))
+                        ->concat(collect(config('team.team', []))->take(config('team.home_limit', 4))->map(fn ($m) => $toCard($m)));
+                }
+            @endphp
+            @foreach($homeCards as $m)
+                <div class="col-6 col-md-4 col-lg-3">
                     <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 team-home-card">
-                        <div class="mx-auto mb-3 rounded-circle overflow-hidden border border-2 border-light shadow-sm" style="width:64px;height:64px;">
-                            <img src="{{ asset('images/team/'.$m['photo']) }}" alt="{{ $m['py'] }}" class="w-100 h-100" style="object-fit:cover;" loading="lazy" decoding="async">
+                        <div class="team-photo-sm mx-auto mb-3">
+                            <img src="{{ $m->photo_url }}" alt="{{ $m->name }}" loading="lazy" decoding="async">
                         </div>
-                        <h6 class="fw-bold mb-0 small">{{ $m['cn'] }} <span class="fw-normal text-muted">{{ $m['py'] }}</span></h6>
-                        <div class="small text-muted" style="font-size:.70rem;">@if($locale==='zh'){{ $m['role_cn'] }}@elseif($locale==='en'){{ $m['role_en'] }}@else{{ $m['role_id'] }}@endif</div>
+                        <h6 class="fw-bold mb-0" style="font-size:.95rem;">{{ $m->name_cn }} <span class="fw-normal text-muted">{{ $m->name }}</span></h6>
+                        <div class="small text-muted" style="font-size:.78rem;">{{ $m->translated_role }}</div>
                     </div>
                 </div>
             @endforeach
@@ -473,6 +476,9 @@
 
 <style>
     .program-card, .translate-card, .team-home-card, .partner-home-card { transition: transform .22s ease, box-shadow .22s ease; }
+    .team-photo-sm { width: 128px; height: 128px; border-radius: 1rem; overflow: hidden; border: 2px solid #fff; box-shadow: 0 .35rem .9rem rgba(0,0,0,.10); background: #f1f3f5; }
+    .team-photo-sm img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+    .team-home-card:hover .team-photo-sm img { transform: scale(1.06); }
     .program-card:hover, .translate-card:hover, .team-home-card:hover, .partner-home-card:hover { transform: translateY(-6px); box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.12) !important; }
     /* Hover halus untuk tombol */
     .btn { transition: transform .18s ease, box-shadow .18s ease, filter .18s ease; }

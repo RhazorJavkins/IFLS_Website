@@ -378,7 +378,7 @@ return [
     'about_team_badge' => 'Core Team',
     'about_team_title' => 'Our Team',
     'about_team_desc' => 'A dedicated management team ensuring the best teaching quality and service.',
-    'about_team_note' => 'Team data is currently static — can be managed via database (admin panel) later.',
+    'about_team_note' => 'Team data is managed via the admin panel (CMS) — updates appear on the site instantly.',
     'about_team_add_more' => 'And growing',
 
     
@@ -427,5 +427,23 @@ return [
         ['q' => 'Do you have programs for companies?', 'a' => 'Yes, we offer corporate training programs tailored to company needs — from Indonesian for expatriates, Mandarin for business, to English for international presentations. Contact us for a special offer.'],
         ['q' => 'How much do courses cost?', 'a' => 'Fees vary depending on program, duration, and format (online/offline, private/group). Contact us for a free consultation and the best price offer tailored to your needs.'],
     ],
+
+    // Hero card (home) & services card
+    'hero_card_tagline' => 'Courses • Translation • Interpreter',
+    'hero_card_sample' => 'Indonesian Class for Foreigners',
+    'hero_card_satisfied' => '92% satisfied',
+    'hero_card_students' => '10,000+ students',
+    'hero_card_cities' => 'Cities',
+    'hero_card_express' => 'Express',
+    'hero_card_sworn' => 'Sworn',
+    'hero_card_official' => 'Official',
+    'hero_card_wachat' => 'WeChat & WhatsApp',
+    'hero_card_reply' => 'Replies < 15 min',
+    'svc_card_languages' => 'Indonesian • Mandarin • English',
+    'svc_card_sample' => 'Sample result',
+    'svc_card_accuracy' => '99.2% accuracy',
+    'svc_card_projects' => '2,400+ projects',
+    'svc_card_confidential' => 'Confidential',
+    'svc_card_revision' => 'Revision',
 
 ];
