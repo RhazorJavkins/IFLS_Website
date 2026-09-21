@@ -127,43 +127,53 @@
         </div>
 
         <div class="row g-4 justify-content-center">
-            {{-- YI YAN --}} 
-            @php $directors = config('team.directors'); $d = $directors[0]; @endphp
+            {{-- Direksi — dari DB (CMS) dengan fallback config --}}
+            @php
+                $locale = app()->getLocale();
+                $directors = \App\Models\TeamMember::query()->active()->where('is_director', true)->orderBy('sort')->get();
+                $isDbDirectors = $directors->isNotEmpty();
+                if (! $isDbDirectors) {
+                    $directors = collect(config('team.directors', []))->map(fn (array $d): object => (object) [
+                        'name' => $d['py'], 'name_cn' => $d['cn'],
+                        'photo_url' => asset('images/team/'.$d['photo']),
+                        'translated_role' => $locale === 'zh' ? $d['role_cn'] : ($locale === 'en' ? $d['role_en'] : $d['role_id']),
+                        'translated_bio' => null, 'quote' => null,
+                    ]);
+                }
+            @endphp
+            @foreach($directors as $d)
             <div class="col-md-6 col-lg-5">
                 <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
-                    <div class="card-body p-4 text-center">
-                        <div class="mx-auto mb-3 rounded-circle overflow-hidden border border-3 border-light shadow" style="width:84px;height:84px;">
-                            <img src="{{ asset('images/team/'.$d['photo']) }}" alt="{{ $d['py'] }}" class="w-100 h-100" style="object-fit:cover;" loading="lazy" decoding="async">
-                        </div>
-                        <h4 class="fw-bold mb-1">{{ $d['cn'] }} <span class="fw-normal text-muted">{{ $d['py'] }}</span></h4>
-                        <div class="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2">@if(app()->getLocale()==='zh'){{ $d['role_cn'] }}@elseif(app()->getLocale()==='en'){{ $d['role_en'] }}@else{{ $d['role_id'] }}@endif</div>
+                    <div class="director-photo-lg mx-auto mt-4 mb-3">
+                        <img src="{{ $d->photo_url }}" alt="{{ $d->name }}" loading="lazy" decoding="async">
+                    </div>
+                    <div class="px-4 pb-2 text-center">
+                    <h4 class="fw-bold mb-1">{{ $d->name_cn }} <span class="fw-normal text-muted">{{ $d->name }}</span></h4>
+                    <div class="badge bg-primary bg-opacity-10 text-primary mb-2 px-3 py-2">{{ $d->translated_role }}</div>
+                    @if($isDbDirectors && $d->translated_bio)
+                        <p class="small text-muted mb-2">{{ $d->translated_bio }}</p>
+                    @else
+                        @if($loop->first)
                         <p class="small text-muted mb-2">{{ __('messages.about_director_yi_desc') }}</p>
                         <div class="small text-muted">{{ __('messages.about_director_yi_role') }}</div>
-                    </div>
-                    <div class="card-footer bg-light border-0 text-center py-3">
-                        <span class="small text-muted"><i class="fa-solid fa-quote-left me-1 text-primary"></i> Hai Nei Cun Zhi Ji, Tian Ya Ruo Bi Lin <i class="fa-solid fa-quote-right ms-1 text-primary"></i></span>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Amber Liu --}}
-            @php $d = $directors[1]; @endphp
-            <div class="col-md-6 col-lg-5">
-                <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
-                    <div class="card-body p-4 text-center">
-                        <div class="mx-auto mb-3 rounded-circle overflow-hidden border border-3 border-light shadow" style="width:84px;height:84px;">
-                            <img src="{{ asset('images/team/'.$d['photo']) }}" alt="{{ $d['py'] }}" class="w-100 h-100" style="object-fit:cover;" loading="lazy" decoding="async">
-                        </div>
-                        <h4 class="fw-bold mb-1">{{ $d['cn'] }} <span class="fw-normal text-muted">{{ $d['py'] }}</span></h4>
-                        <div class="badge bg-warning bg-opacity-20 mb-2 px-3 py-2" style="color:#7a5200;">{{ __('messages.about_director_amber_badge') }}</div>
+                        @else
                         <p class="small text-muted mb-2">{{ __('messages.about_director_amber_desc') }}</p>
                         <div class="small text-muted">{{ __('messages.about_director_amber_role') }}</div>
+                        @endif
+                    @endif
                     </div>
-                    <div class="card-footer bg-light border-0 text-center py-3">
+                    <div class="card-footer bg-light border-0 text-center py-3 mt-auto">
+                        @if($isDbDirectors && $d->quote)
+                        <span class="small text-muted"><i class="fa-solid fa-quote-left me-1 text-primary"></i> {{ $d->quote }} <i class="fa-solid fa-quote-right ms-1 text-primary"></i></span>
+                        @elseif($loop->first)
+                        <span class="small text-muted"><i class="fa-solid fa-quote-left me-1 text-primary"></i> Hai Nei Cun Zhi Ji, Tian Ya Ruo Bi Lin <i class="fa-solid fa-quote-right ms-1 text-primary"></i></span>
+                        @else
                         <span class="small text-muted"><i class="fa-solid fa-handshake me-1 text-warning"></i> Bridging Two Cultures</span>
+                        @endif
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </section>
 
@@ -177,20 +187,27 @@
 
         <div class="row g-4">
             @php
-                $team = config('team.team');
-                $locale = app()->getLocale();
+                $team = \App\Models\TeamMember::query()->active()->where('is_director', false)->orderBy('sort')->get();
+                if ($team->isEmpty()) {
+                    // Fallback config — situs tetap tampil walau DB kosong
+                    $team = collect(config('team.team', []))->map(fn (array $m): object => (object) [
+                        'name' => $m['py'], 'name_cn' => $m['cn'],
+                        'photo_url' => asset('images/team/'.$m['photo']),
+                        'translated_role' => $locale === 'zh' ? $m['role_cn'] : ($locale === 'en' ? $m['role_en'] : $m['role_id']),
+                    ]);
+                }
             @endphp
 
             @foreach($team as $m)
-                <div class="col-6 col-md-4 col-lg">
+                <div class="col-6 col-md-4 col-lg-3">
                     <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3 team-card">
-                        <div class="mx-auto mb-3 rounded-circle overflow-hidden border border-2 border-light shadow-sm" style="width:64px;height:64px;">
-                            <img src="{{ asset('images/team/'.$m['photo']) }}" alt="{{ $m['py'] }}" class="w-100 h-100" style="object-fit:cover;">
+                        <div class="team-photo-sm mx-auto mb-3">
+                            <img src="{{ $m->photo_url }}" alt="{{ $m->name }}" loading="lazy" decoding="async">
                         </div>
                         {{-- Nama 1 baris: CN + alfabet --}}
-                        <h6 class="fw-bold mb-1" style="font-size:.85rem;">{{ $m['cn'] }} <span class="fw-normal text-muted">{{ $m['py'] }}</span></h6>
+                        <h6 class="fw-bold mb-1" style="font-size:.95rem;">{{ $m->name_cn }} <span class="fw-normal text-muted">{{ $m->name }}</span></h6>
                         {{-- Jabatan 1 bahasa saja per locale --}}
-                        <div class="small text-muted" style="font-size:.72rem;">@if($locale==='zh'){{ $m['role_cn'] }}@elseif($locale==='en'){{ $m['role_en'] }}@else{{ $m['role_id'] }}@endif</div>
+                        <div class="small text-muted" style="font-size:.78rem;">{{ $m->translated_role }}</div>
                     </div>
                 </div>
             @endforeach
@@ -219,5 +236,10 @@
     .team-card { transition: transform .18s ease, box-shadow .18s ease; }
     .uni-card, .team-card { transition: transform .18s ease, box-shadow .18s ease; }
     .uni-card:hover, .team-card:hover { transform: translateY(-5px); box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.12) !important; }
+    .team-photo-sm { width: 128px; height: 128px; border-radius: 1rem; overflow: hidden; border: 2px solid #fff; box-shadow: 0 .35rem .9rem rgba(0,0,0,.10); background: #f1f3f5; }
+    .team-photo-sm img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+    .team-card:hover .team-photo-sm img, .team-home-card:hover .team-photo-sm img { transform: scale(1.06); }
+    .director-photo-lg { width: 200px; height: 200px; border-radius: 1.25rem; overflow: hidden; border: 3px solid #fff; box-shadow: 0 .5rem 1.2rem rgba(0,0,0,.12); background: #f1f3f5; }
+    .director-photo-lg img { width: 100%; height: 100%; object-fit: cover; }
 </style>
 @endsection

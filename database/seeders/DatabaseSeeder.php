@@ -111,7 +111,7 @@ class DatabaseSeeder extends Seeder
         // Seeder konten Fase 4 & 5 (idempotent — bisa dipanggil berulang)
         $this->call([
             ContentSeeder::class,
-            CourseContentSeeder::class,
+            CourseContentSeeder::class, TeamSeeder::class,
         ]);
     }
 }
