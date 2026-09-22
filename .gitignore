@@ -20,6 +20,7 @@ yarn-error.log
 .env.backup
 .env.production
 /admin-credentials.txt
+/storage/app/analytics
 
 # ===== Database (berisi data pribadi leads; regenerasi: migrate --seed) =====
 /database/*.sqlite
