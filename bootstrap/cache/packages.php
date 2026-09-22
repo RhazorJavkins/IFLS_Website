@@ -161,4 +161,15 @@
       0 => 'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider',
     ),
   ),
+  'spatie/laravel-analytics' => 
+  array (
+    'aliases' => 
+    array (
+      'Analytics' => 'Spatie\\Analytics\\Facades\\Analytics',
+    ),
+    'providers' => 
+    array (
+      0 => 'Spatie\\Analytics\\AnalyticsServiceProvider',
+    ),
+  ),
 );

@@ -46,8 +46,11 @@
     42 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     43 => 'Termwind\\Laravel\\TermwindServiceProvider',
     44 => 'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider',
-    45 => 'App\\Providers\\AppServiceProvider',
-    46 => 'App\\Providers\\Filament\\AdminPanelProvider',
+    45 => 'Spatie\\Analytics\\AnalyticsServiceProvider',
+    46 => 'App\\Providers\\AppServiceProvider',
+    47 => 'App\\Providers\\Filament\\AdminPanelProvider',
+    48 => 'App\\Providers\\Filament\\TrainingPanelProvider',
+    49 => 'App\\Providers\\Filament\\TranslatePanelProvider',
   ),
   'eager' => 
   array (
@@ -81,8 +84,11 @@
     27 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     28 => 'Termwind\\Laravel\\TermwindServiceProvider',
     29 => 'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider',
-    30 => 'App\\Providers\\AppServiceProvider',
-    31 => 'App\\Providers\\Filament\\AdminPanelProvider',
+    30 => 'Spatie\\Analytics\\AnalyticsServiceProvider',
+    31 => 'App\\Providers\\AppServiceProvider',
+    32 => 'App\\Providers\\Filament\\AdminPanelProvider',
+    33 => 'App\\Providers\\Filament\\TrainingPanelProvider',
+    34 => 'App\\Providers\\Filament\\TranslatePanelProvider',
   ),
   'deferred' => 
   array (

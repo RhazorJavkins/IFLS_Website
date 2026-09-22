@@ -10,3 +10,6 @@ Artisan::command('inspire', function () {
 
 // Backup database harian (retensi default 7 hari) — B5
 Schedule::command('db:backup')->dailyAt('23:00');
+
+// Backup dokumen privat portal translate (retensi 14 hari)
+Schedule::command('documents:backup')->dailyAt('23:05');

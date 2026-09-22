@@ -1,6 +1,6 @@
 # Review & Next Steps — IFLS Website
 
-> Last updated: 2026-09-21
+> Last updated: 2026-09-22
 > Dev lokal: http://127.0.0.1:8080/id (Laravel 13 + Filament 4.13) — lihat `HANDOVER/README.md` untuk setup PC lain
 > ⚠️ Static export Vercel (https://vercel-preview-theta-ten.vercel.app/id) SUDAH USANG — tidak memuat CMS/admin/form-lead; produksi idealnya pindah ke VPS (lihat Fase 6)
 
@@ -167,6 +167,25 @@
 - **Regenerasi** (setelah ganti PNG sumber): `php artisan logo:regenerate` — pipeline marching-squares + RDP (eps 1.0 @400px) + tulis ulang SVG & partial; output deterministik (fidelity terverifikasi IoU 0.93/0.89). Lalu `view:clear` bila perlu, commit hasilnya
 - Larangan: JANGAN tambah rule global `img{background:...}` / JANGAN render logo sebagai `<img>` di atas latar gelap
 
+### Fase 7 — Analitik CMS + Portal Guru & Translate ✅ SELESAI (22 Sep 2026)
+- [x] **Analitik GA4 di `/admin`**: `spatie/laravel-analytics` v5.7 (GA4 Data API), service wrapper aman `AnalyticsService` (null bila tak terkonfigurasi), widget chart trend 7/14/30 hari, halaman **Laporan → Analitik** (kartu pengunjung/pageviews/hal-per-kunjungan + 15 halaman terpopuler) — respons API cache 24 jam; tanpa kredensial tampil petunjuk setup, TIDAK error
+- [x] Kredensial: `ANALYTICS_PROPERTY_ID` (.env) + JSON service account di `storage/app/analytics/` (di-gitignore); **bonus fix**: `config('services.analytics.ga_id')` sebelumnya tidak terdaftar di `config/services.php` → script GA4 frontend selama ini mati — kini aktif
+- [x] **Role pengguna**: kolom `users.role` (`admin|teacher|translator`) + matriks panel — `/admin` hanya admin, `/training` admin+guru, `/translate` admin+penerjemah; middleware `EnsureRole` (403 + logout paksa agar session bersih); admin melihat/mengelola akun di `/admin` → Sistem → Pengguna
+- [x] **Panel Guru `/training`** (brand biru): dashboard ringkasan mengajar (kelas aktif, murid, absensi 7 hari, murid berisiko), Kelas Saya (scoping: guru hanya kelas miliknya di query + 404), Murid, **absensi bulk** (satu form per pertemuan, toggle Hadir/Izin/Sakit/Alpa per murid, `wire:model.live`), **nilai tertimbang** (tabel stand-alone per kelas), **laporan** (kehadiran %, rata-rata tertimbang, murid berisiko alpa≥3/nilai<70, tombol WhatsApp per murid), export CSV absensi & nilai (UTF-8 BOM)
+- [x] **Panel Translate `/translate`** (brand teal): Proyek terjemahan (klien, pasangan bahasa, layanan, deadline, status, harga), **Dokumen di disk PRIVAT** (`storage/app/private/documents` — unduhan hanya via route ter-proteksi `auth+role`, validasi MIME + maks 20MB, file terhapus saat record dihapus), **Leads Website read-only** (lihat, filter, tandai sudah dihubungi, export CSV)
+- [x] Route export/unduh: `/portal/training/{class}/absensi.csv|nilai.csv`, `/portal/translate/documents/{document}/download`, `/portal/translate/leads.csv` — semua `auth + role:...`; tamu diarahkan ke login portal masing-masing (`Authenticate::redirectUsing` di AppServiceProvider)
+- [x] IP allowlist TETAP hanya di `/admin` (guru/penerjemah akses dari mana saja); keamanan portal dari auth + `AuthenticateSession` + password minimal 12 karakter
+- [x] Backup: `documents:backup` (ZIP harian 23:05, retensi 14) melengkapi `db:backup` (23:00)
+- [x] Test: **53 passed (149 assertions)** — matrix akses 3 panel, scoping kelas guru, unique absensi, nilai tertimbang, murid berisiko, dokumen privat (200/403/redirect + MIME + hapus file), CSV access control, fallback analytics
+- [ ] Setup GA4 Data API (service account + property ID) — menunggu akses Google Analytics klien
+- [ ] Subdomain `training.`/`translate.` → dipetakan saat deploy VPS Fase 6 (panel path sudah siap)
+
+**Catatan arsitektur portal (jangan dilanggar):**
+- 3 panel = **satu codebase, satu deploy** — resource training di `app/Filament/Training/`, translate di `app/Filament/Translate/`, admin tetap `app/Filament/Resources/` (auto-discover per panel via `discoverResources`)
+- Dokumen TIDAK boleh pindah ke disk public; unduhan harus lewat route ter-proteksi
+- Guru scoping wajib lewat query (`getEloquentQuery`/`mount` cek `teacher_id`), bukan hanya visibility UI
+- Halaman custom record Filament v4: JANGAN override `mount(int|string $record)` — pakai `request()->route('record')` (sudah model ter-bind) + `getRecord()`
+
 ---
 
 ## Ringkasan Skor
@@ -176,9 +195,10 @@
 | Design UI | 9/10 | Semua DONE (hero placeholder dihapus, hover, mobile OK) |
 | Flow Fitur | 9/10 | Semua DONE + detail blog & form lead |
 | Konten | 9/10 | Sisa gallery foto asli + testimoni asli (menunggu aset) |
-| Backend/CMS | 9/10 | Fase 4–5 selesai: `/admin` kelola lead, konten, program, kelas, jadwal, harga |
-| Security | 8/10 | Headers + anti-spam + upload aman jalan; CSP belum enforce; produksi masih harus ke VPS |
-| **Rata-rata** | **9/10** | **Situs dinamis penuh — tinggal aset foto & migrasi VPS (Fase 6)** |
+| Backend/CMS | 9/10 | Fase 4–5+7: `/admin` kelola lead, konten, program, kelas, jadwal, harga, pengguna + analitik GA4 |
+| Portal Internal | 9/10 | Fase 7: `/training` (absensi, nilai, laporan) & `/translate` (proyek, dokumen privat, leads) |
+| Security | 8/10 | Headers + anti-spam + upload aman + role 3 panel + dokumen privat; CSP belum enforce; produksi ke VPS |
+| **Rata-rata** | **9/10** | **Situs dinamis + 3 portal internal — tinggal aset foto, setup GA4 API & migrasi VPS (Fase 6)** |
 
 **Sisa item:** (1) gallery foto asli `public/images/gallery/`, (2) testimoni asli, (3) CSP enforce, (4) VPS + domain + MySQL. Test suite: `php artisan test` → **23 passed (73 assertions)**.
 
@@ -193,7 +213,7 @@
 ```bash
 # Dev lokal (PC kantor sudah ter-setup — PHP 8.3.30 Laragon sudah di PATH):
 php artisan serve --host=127.0.0.1 --port=8080   # → http://127.0.0.1:8080/id
-php artisan test                                  # 23 tests
+php artisan test                                  # 53 tests (termasuk matrix akses 3 panel)
 php artisan db:seed --force                       # ContentSeeder + CourseContentSeeder (idempotent)
 ```
 
