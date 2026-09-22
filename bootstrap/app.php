@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use App\Http\Middleware\EnsureRole; // alias 'role' untuk route portal
 use App\Http\Middleware\Localization; // <-- Import middleware kita
 use App\Http\Middleware\SecurityHeaders;
 
@@ -13,9 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Daftarkan middleware dengan alias 'locale'
+        // Daftarkan middleware dengan alias 'locale' & 'role'
         $middleware->alias([
             'locale' => Localization::class,
+            'role' => EnsureRole::class,
         ]);
 
         // Security headers untuk semua request web

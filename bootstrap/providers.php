@@ -3,4 +3,6 @@
 return [
     App\Providers\AppServiceProvider::class,
     App\Providers\Filament\AdminPanelProvider::class,
+    App\Providers\Filament\TrainingPanelProvider::class,
+    App\Providers\Filament\TranslatePanelProvider::class,
 ];

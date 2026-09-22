@@ -108,10 +108,11 @@ class DatabaseSeeder extends Seeder
 
         $this->command->info('✅ Data kursus dan jadwal berhasil di-seed!');
 
-        // Seeder konten Fase 4 & 5 (idempotent — bisa dipanggil berulang)
+        // Seeder konten Fase 4 & 5 + portal (idempotent — bisa dipanggil berulang)
         $this->call([
             ContentSeeder::class,
             CourseContentSeeder::class, TeamSeeder::class,
+            PortalUsersSeeder::class,
         ]);
     }
 }
