@@ -15,6 +15,12 @@
             <h2 class="text-lg font-bold text-gray-900 dark:text-white">{{ $record->name }}</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
                 {{ $students->count() }} murid · {{ $sessions->count() }} pertemuan tercatat
+                @if ($record->location)
+                    · 📍 {{ $record->location }}
+                @endif
+                @if ($record->period)
+                    · 🗓 {{ $record->period }}
+                @endif
             </p>
         </div>
 

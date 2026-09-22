@@ -57,19 +57,25 @@ class ClassResource extends Resource
                     ->options(fn () => Course::orderBy('id')->pluck('name', 'id'))
                     ->searchable()
                     ->nullable(),
+                TextInput::make('location')
+                    ->label('Lokasi kelas')
+                    ->maxLength(120)
+                    ->placeholder('mis. Ruang 101 / Online')
+                    ->helperText('Nama ruangan untuk kelas offline, atau "Online"'),
                 Select::make('teacher_id')
                     ->label('Guru pengajar')
                     ->options(fn () => User::where('role', User::ROLE_TEACHER)->orWhere('role', User::ROLE_ADMIN)->orderBy('name')->pluck('name', 'id'))
                     ->searchable()
                     ->required(),
+                DatePicker::make('started_at')->label('Tanggal mulai')->nullable(),
+                DatePicker::make('ended_at')->label('Tanggal selesai')->nullable()
+                    ->afterOrEqual('started_at'),
                 Select::make('students')
                     ->label('Murid')
                     ->relationship('students', 'name')
                     ->multiple()
                     ->searchable()
                     ->preload(),
-                DatePicker::make('started_at')->label('Mulai')->nullable(),
-                DatePicker::make('ended_at')->label('Selesai')->nullable(),
                 Select::make('status')
                     ->options(['active' => 'Aktif', 'finished' => 'Selesai', 'cancelled' => 'Dibatalkan'])
                     ->required()
@@ -83,6 +89,11 @@ class ClassResource extends Resource
             ->columns([
                 TextColumn::make('name')->label('Kelas')->searchable()->sortable(),
                 TextColumn::make('course.name')->label('Program')->placeholder('—'),
+                TextColumn::make('location')->label('Lokasi')
+                    ->badge()
+                    ->color(fn (?string $state) => $state === 'Online' ? 'info' : 'gray')
+                    ->placeholder('—'),
+                TextColumn::make('period')->label('Periode')->placeholder('—'),
                 TextColumn::make('teacher.name')->label('Guru')->sortable(),
                 TextColumn::make('students_count')->counts('students')->label('Murid')->alignCenter(),
                 TextColumn::make('sessions_count')->counts('sessions')->label('Pertemuan')->alignCenter(),

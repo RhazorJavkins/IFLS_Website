@@ -4,6 +4,12 @@
             <h2 class="text-lg font-bold text-gray-900 dark:text-white">Laporan — {{ $record->name }}</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400">
                 {{ $rows->count() }} murid · {{ $record->sessions->count() }} pertemuan
+                @if ($record->location)
+                    · 📍 {{ $record->location }}
+                @endif
+                @if ($record->period)
+                    · 🗓 {{ $record->period }}
+                @endif
             </p>
         </div>
 

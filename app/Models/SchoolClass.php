@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class SchoolClass extends Model
 {
     protected $fillable = [
-        'name', 'course_id', 'teacher_id', 'started_at', 'ended_at', 'status',
+        'name', 'course_id', 'teacher_id', 'location', 'started_at', 'ended_at', 'status',
     ];
 
     protected function casts(): array
@@ -44,6 +44,18 @@ class SchoolClass extends Model
     public function grades(): HasMany
     {
         return $this->hasMany(Grade::class);
+    }
+
+    /** Periode kelas terformat: "01 Sep – 15 Des 2026" (fallback saat kosong). */
+    public function getPeriodAttribute(): ?string
+    {
+        if (! $this->started_at && ! $this->ended_at) {
+            return null;
+        }
+
+        $fmt = fn ($d) => $d?->translatedFormat('d M Y');
+
+        return trim(($fmt($this->started_at) ?? '…') . ' – ' . ($fmt($this->ended_at) ?? '…'));
     }
 
     /** Persentase kehadiran murid di kelas ini (semua sesi tercatat). */

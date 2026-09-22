@@ -32,6 +32,8 @@ class StudentResource extends Resource
                 TextInput::make('name')->label('Nama')->required()->maxLength(120)->columnSpanFull(),
                 TextInput::make('phone')->label('No. WhatsApp')->tel()->maxLength(30)
                     ->helperText('Format internasional tanpa +, mis. 6281234567890 — dipakai untuk tombol WA'),
+                TextInput::make('wechat_id')->label('ID WeChat')->maxLength(60)
+                    ->placeholder('mis. budi_wx88'),
                 TextInput::make('email')->email()->maxLength(150),
                 Textarea::make('notes')->label('Catatan')->rows(3)->columnSpanFull(),
                 Toggle::make('is_active')->label('Aktif')->default(true),
@@ -44,6 +46,11 @@ class StudentResource extends Resource
             ->columns([
                 TextColumn::make('name')->searchable()->sortable(),
                 TextColumn::make('phone')->label('WhatsApp')->placeholder('—'),
+                TextColumn::make('wechat_id')->label('WeChat')
+                    ->badge()
+                    ->color('success')
+                    ->copyable()
+                    ->placeholder('—'),
                 TextColumn::make('email')->placeholder('—'),
                 TextColumn::make('classes_count')->counts('classes')->label('Kelas')->alignCenter(),
                 ToggleColumn::make('is_active')->label('Aktif'),
