@@ -37,6 +37,25 @@ Route::group(['prefix' => '{locale}', 'middleware' => 'locale', 'where' => ['loc
         ->name('contact.store');
 });
 
+// ===== PORTAL INTERNAL (auth + role) =====
+// Export CSV absensi & nilai (di luar panel Filament agar bisa di-link langsung)
+Route::middleware(['auth', 'role:admin,teacher'])->group(function () {
+    Route::get('/portal/training/{class}/absensi.csv', [App\Http\Controllers\Portal\TrainingExportController::class, 'attendanceCsv'])
+        ->name('portal.training.attendance.csv');
+    Route::get('/portal/training/{class}/nilai.csv', [App\Http\Controllers\Portal\TrainingExportController::class, 'gradesCsv'])
+        ->name('portal.training.grades.csv');
+});
+
+// Unduh dokumen terjemahan (disk privat — hanya penerjemah & admin)
+Route::get('/portal/translate/documents/{document}/download', [App\Http\Controllers\Portal\DocumentDownloadController::class, 'download'])
+    ->middleware(['auth', 'role:admin,translator'])
+    ->name('portal.translate.documents.download');
+
+// Export CSV leads (portal translate)
+Route::get('/portal/translate/leads.csv', [App\Http\Controllers\Portal\LeadExportController::class, 'csv'])
+    ->middleware(['auth', 'role:admin,translator'])
+    ->name('portal.translate.leads.csv');
+
 // Sitemap & robots (tanpa prefix locale)
 Route::get('/sitemap.xml', [App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
 Route::get('/robots.txt', function () {
